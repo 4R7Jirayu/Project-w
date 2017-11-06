@@ -8,7 +8,7 @@
 <div class="col-md-6 col-md-offset-3">
 <div class="header clerfix"> 
 
-</div> <a href="add_student.php">เพิ่มสมาชิก</a> 
+</div> 
 <h1>Custom Menu</h1>
         Add menu
         Edit ราคา
@@ -17,14 +17,7 @@
     <tr class="text-center"> 
         <td>#</td> <td>Name Menu</td> 
         <td>Discription</td> 
-        <td>Price</td> 
-        <td>Faculty</td> 
-        <td>Nick Name</td> 
-        <td>Tel</td> 
-        <td>Brithday</td> 
-        <td>Ages</td> 
-        <td>Address</td> 
-        
+        <td>Price</td>         
         <td>Action</td> 
     </tr> 
 <?php $sql = mysqli_query($conn,"Select * from student inner join major on student.major_id=major.major_id inner join faculty on faCulty.faculty_id=major.faculty_id ORDER BY std_id ASC"); 
@@ -42,9 +35,7 @@
         echo "<td>".$row['std_birthday']."</td>"; 
         echo "<td>".$row['std_age']."</td>"; 
         echo "<td>".$row['std_address']."</td>"; 
-       // echo "<td> <a href='edit_student.php?std_id=".$row['std_id']."'> <span class='glyphicon glyphicon—pencil' aria—hidden='true'></span> แก้ไข</a> ";
-        //echo "<a href='del_student.php?std_id=".$row['std_id']." onclick='return confirm(\"ลบข้อมูลนี้ ?\");'> <span class='glyphicon glyphicon-trash' aria-hidden='true'>ลบ</span> </a> </td>";              
-       // echo "</tr>"; 
+      
        echo "<td>
        <a href='edit_student.php?std_id=".$row['std_id']."'>
        <span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
