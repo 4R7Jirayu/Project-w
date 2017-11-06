@@ -34,7 +34,7 @@ include "head.php";
   <label for="lname">Password</label>
   <input type="password" class="form-control" id="lname" name="lastname" placeholder="Password">
   <br><br>
-  <a class="btn btn-warning"  id="button" href="menu.php" role="button" width=250px>Login</a>
+  <a class="btn btn-warning"  id="button" href="menu.php" role="button">Login</a>
   <br><br>
   <a class="btn btn-warning" id="button" href="register.php" role="button">Register</a>
   </form>
