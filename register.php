@@ -26,22 +26,21 @@
 
 <div >
 <input type="text" class="form-control" placeholder="Name" name="name" required />
-<br><br>
+<br>
 <input type="text" id="i" class="form-control" 	placeholder="SSN" name="ssn" required />
-<br><br>
+<br>
 
 <input type="text" id="i" class="form-control" placeholder="Address" name="address" required />
-<br><br>
+<br>
 
 <input type="text" id="i" class="form-control" placeholder="Tel" name="tel" required />
-<br><br>
+<br>
 
 <input type="text" id="i" class="form-control" placeholder="E-mail" name="email" required />
-<br><br>
+<br>
 
 <input type="text" id="i" class="form-control" placeholder="Password" name="pass" required />
-<br><br>
-
+<br>
 <input type="text" id="i" class="form-control" placeholder="Confirm Password" name="conpass" required />
 <br><br>
 <a class="btn btn-warning" id="button" href="menu.php" role="button">Register</a>
