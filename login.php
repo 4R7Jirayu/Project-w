@@ -24,7 +24,7 @@ label{color:white;}
 include "head.php";
 ?>
 
-<body background="images/1.jpg">
+<body background="images/bg.jpg">
 <div class="main">
 <form action="/action_page.php">
   <h3 id="h">Welcome to NP CARCARE</h3><br><br>
