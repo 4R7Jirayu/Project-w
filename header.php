@@ -2,7 +2,7 @@
 <html>
 <head>
 <style>
-ul {
+#ull{
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -10,7 +10,7 @@ ul {
     background-color: #FF6600;
 }
 
-li {
+#lii{
     float: left;
 	display: block;
     color: white;
@@ -23,8 +23,8 @@ li {
 </head>
 <body>
 
-<ul>
-  <li>NP CARCARE</li>
+<ul id="ull">
+  <li id="lii">NP CARCARE</li>
 </ul>
 
 </body>
