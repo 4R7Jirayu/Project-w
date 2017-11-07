@@ -11,6 +11,7 @@
         <a href="printBillAd.php" class="btn btn-warning " role="button" aria-pressed="true">Print Bill</a>
 	    <a href="customMenu.php" class="btn btn-warning " role="button" aria-pressed="true">Custom Menu</a>
         <a href="orderAd.php" class="btn btn-warning " role="button" aria-pressed="true">Status</a>
+		<a href="Addcar.php" class="btn btn-warning " role="button" aria-pressed="true">Add Car</a>
     </div>
     </div>
   </div>       
