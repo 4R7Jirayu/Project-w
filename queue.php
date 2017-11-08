@@ -3,7 +3,9 @@
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="jquery.weekly-schedule-plugin.min.js"></script>
 <?php include "header.php";?>
-
+<style>
+div{right:100px;}
+</style>
 <div id="mySchedule">
 <div  class="container">
 <script>
