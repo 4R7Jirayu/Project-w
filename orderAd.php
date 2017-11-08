@@ -1,27 +1,64 @@
-<html> 
+<style>
+    .custab{
+    border: 5px solid #000000;
+    padding: 5px;
+    margin: 5% 0;
+    background-color: #FFFFFF;
+    }
+</style>
+<html>
 <?php include "head.php"; ?>
 <title>Order Admin</title>
-<body> 
-<div class="containern"> 
-<div class="row"> 
-<div class="col-md-6 col-md-offset-3">
-<div class="header clerfix"> 
+<body>
+<h1 style="text-align:center">Order Customer</h1>
+<h3 style="margin-left:20">Customer</h3>
+<div class="container">
+<div class="row col-md-12 custyle">
+<table class="table custab">
+<thead>
+    <tr>
+        <th>No</th>
+        <th>Customer</th>
+        <th>Cust ID</th>
+        <th>Status</th>
+        <th>Time</th>
+        <th>Amount</th>
+        <th class="text-center">Edit</th>
+    </tr>
+</thead>
+        <tr>
+            <td>1</td>
+            <td>News</td>
+            <td>News Cate</td>
+            <td>News Cate</td>
+            <td>News Cate</td>
+            <td>News Cate</td>
+            <td class="text-center"><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Products</td>
+            <td>Main Products</td>
+            <td>Main Products</td>
+            <td>Main Products</td>
+            <td>Main Products</td>
+            <td class="text-center"><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Blogs</td>
+            <td>Parent Blogs</td>
+            <td>Parent Blogs</td>
+            <td>Parent Blogs</td>
+            <td>Parent Blogs</td>
+            <td class="text-center"><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </tr>
+</table>
+<a href="#" class="btn btn-primary btn-lg pull-right"><b>+</b>Confirm</a>
+</div>
+</div>
 
-</div> <a href="add_student.php">เพิ่มสมาชิก</a> 
-<table class="table "> 
-    <tr class="text-center"> 
-        <td>#</td> <td>First Name</td> 
-        <td>Last Name</td> 
-        <td>ID</td> 
-        <td>Faculty</td> 
-        <td>Nick Name</td> 
-        <td>Tel</td> 
-        <td>Brithday</td> 
-        <td>Ages</td> 
-        <td>Address</td> 
-        
-        <td>Action</td> 
-    </tr> 
+
 <?php $sql = mysqli_query($conn,"Select * from student inner join major on student.major_id=major.major_id inner join faculty on faCulty.faculty_id=major.faculty_id ORDER BY std_id ASC"); 
     $n=1; 
     while($row = mysqli_fetch_array($sql))
