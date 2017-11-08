@@ -2,7 +2,7 @@
     $.fn.weekly_schedule = function(callerSettings) {
 
         var settings = $.extend({
-            days: ["sun", "mon", "tue", "wed", "thu", "fri", "sat", "fri", "sat"], // Days displayed
+            days: ["sun", "mon", "tue", "wed", "thu", "sat", "sat"], // Days displayed
             hours: "7:00AM-10:00PM", // Hours displyed
             fontFamily: "Montserrat", // Font used in the component
             fontColor: "black", // Font colot used in the component
@@ -158,7 +158,7 @@
             $('.header-item').css({
                 width: '100%',
                 height: '100%',
-                margin: '0px' // option
+                margin: '2px' // option
             });
             $('.header-item h3').css({
                 margin: 0,
@@ -280,6 +280,14 @@
 
         }
 
+        function generateDates(start, end) {
+            var numOfRows = Math.ceil(timeDiff(start, end) / 30);
+            return $.map(new Array(numOfRows), function(_, i) {
+                // need a dummy date to utilize the Date object
+                return new Date(new Date(2000, 0, 1, start.split(':')[0], start.split(':')[1]).getTime() + i * interval * 60000);
+            });
+        }
+
         function parseHours(string) {
             var output = [];
 
@@ -290,20 +298,39 @@
             var startHour = split[0].includes("PM") ? startInt + 12 : startInt;
             var endHour = split[1].includes("PM") ? endInt + 12 : endInt;
 
-            var curHour = startHour;
 
-            for (curHour; curHour <= endHour; curHour++) {
+
+            var curHour = startHour;
+            var i = 9;
+
+            for (i; i <= 17; i++) {
                 var parsedStr = "";
 
-                if (curHour > 12) {
+                /* if (curHour > 12) {
                     parsedStr += (curHour - 12).toString() + ":00PM";
+
+                    parsedStr += (curHour - 12).toString() + ":30PM";
                 } else if (curHour == 12) {
                     parsedStr += curHour.toString() + ":00PM";
+
+                    parsedStr += "12:30PM";
+
                 } else {
                     parsedStr += curHour.toString() + ":00AM";
+
+                    parsedStr += curHour.toString() + ":30AM";
+
                 }
+            */
+                if (i % 2 != 0) {
+                    parsedStr += (i).toString() + ":00";
+                } else {
+                    parsedStr += (i).toString() + ":30";
+                }
+
                 output.push(parsedStr);
             }
+
             return output;
         }
 
