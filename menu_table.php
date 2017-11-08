@@ -1,10 +1,24 @@
-<?php
-	include "connectdb.php";
-?>
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
 <html>
 	<?php include "head.php";?>
+
+
+	<style>
+	input[type=submit] {
+    width: 20%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 10px;
+    margin: 8px 104px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+</style>
 	<body>
 	<div class="container">
 	<div class="row">
@@ -58,5 +72,6 @@
 		</div>
 		</div>
 		</div>
+		<input type="submit" value="Submit">
 		</body>
 		</html>

@@ -1,6 +1,7 @@
 <html>
 <?php include "header.php";?>
-<?php include "head.php";?>
+<?php include "head.php";
+?>
 <style>
 .dropdown{
 float:left;
@@ -164,5 +165,10 @@ left:0;
         </div>
     </div>
 </div>
+
+<?php 
+include "menu_table.php";
+
+?>
 
 </html>
