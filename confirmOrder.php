@@ -18,6 +18,12 @@ div{
 span{
     text-align: justify;
 }
+th{
+	text-align: center;
+}
+td{
+	text-align: center;
+}
 </style>
 <center>
 <div class="div">
@@ -25,39 +31,49 @@ span{
 </div>
 <div>
 <h3 style="text-decoration: underline">Personal Data</h3><br>
-<span style="display:inline-block">Name :<br>
-<input type=text name=foo id=foo />
+<span style="display:inline-block">
+<input type=text name=foo id=foo placeholder=Name>
 </span><br>
-<span style="display:inline-block">SSN :<br>
-<input type=text name=bar id=bar />
+<span style="display:inline-block">
+<input type=text name=bar id=bar placeholder=SSN>
 </span><br>
-<span style="display:inline-block">CustomerID :<br>
-<input type=text name=bar id=bar />
+<span style="display:inline-block">
+<input type=text name=bar id=bar placeholder=CustomerID>
 </span><br>
-<span style="display:inline-block">Address :<br>
-<input type=text name=bar id=bar />
+<span style="display:inline-block">
+<input type=text name=bar id=bar placeholder=Address>
 </span><br>
-<span style="display:inline-block">Email :<br>
-<input type=text name=bar id=bar />
+<span style="display:inline-block">
+<input type=text name=bar id=bar placeholder=Email>
 </span><br>
-<span style="display:inline-block">Tel :<br>
-<input type=text name=bar id=bar />
+<span style="display:inline-block">
+<input type=text name=bar id=bar placeholder=Tel>
 </span>
 </div>
 
 <div class="container">
 	<div class="row">
-	 <div class="col-md-12 ">
+	 <div class="col-md-10 col-md-offset-1">
 	 <div class="table-responsive">
-	 <table id="mytable" class="table table-boarded table-striped">
-	  <tr class="text-center">
-	  <td>No.</td>
-	  <td>Orders</td>
-	  <td>Name</td>
-	  <td>Price</td>
-	  <td>Size</td>
-	  <td>Time</td>
+	 <table id="mytable" class="table table-striped" style="background-color:#33CC33">
+	  <tr>
+	  <th>No.</th>
+	  <th>Orders</th>
+	  <th>Name</th>
+	  <th>Price</th>
+	  <th>Size</th>
+	  <th>Time</th>
 	  </tr>
+	  <td>asdasd</td>
+	  <td>zxc</td>
+	  <td>asdl</td>
+	  <td>qwe</td>
+	  <td>wqess</td>
+	  <td>Aqwen</td>
+	  <tr>
+	<td colspan="3">Total Price</td>
+    <td colspan="3">---</td>
+  		</tr>
      </table>
     </div>
     </div>
