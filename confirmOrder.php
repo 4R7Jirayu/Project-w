@@ -21,26 +21,26 @@ span{
 </style>
 <center>
 <div class="div">
-<h1>Result</h1>
+<h1 style="color:red">Result</h1>
 </div>
 <div>
-<h3>Personal Data</h3><br>
-<span style="display:inline-block">Name :
+<h3 style="text-decoration: underline">Personal Data</h3><br>
+<span style="display:inline-block">Name :<br>
 <input type=text name=foo id=foo />
 </span><br>
-<span style="display:inline-block">SSN :
+<span style="display:inline-block">SSN :<br>
 <input type=text name=bar id=bar />
 </span><br>
-<span style="display:inline-block">CustomerID :
+<span style="display:inline-block">CustomerID :<br>
 <input type=text name=bar id=bar />
 </span><br>
-<span style="display:inline-block">Address :
+<span style="display:inline-block">Address :<br>
 <input type=text name=bar id=bar />
 </span><br>
-<span style="display:inline-block">Email :
+<span style="display:inline-block">Email :<br>
 <input type=text name=bar id=bar />
 </span><br>
-<span style="display:inline-block">Tel :
+<span style="display:inline-block">Tel :<br>
 <input type=text name=bar id=bar />
 </span>
 </div>
@@ -63,5 +63,6 @@ span{
     </div>
     </div>
 </div>
-<input type="submit" value="Checkout" class="btn btn-primary">
+<a href="#" class="btn btn-primary btn-lg"><b>Checkout</b></a>
+
 </html>
