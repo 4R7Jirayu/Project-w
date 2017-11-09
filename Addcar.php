@@ -44,23 +44,43 @@ div {
 <h1>เพิ่มรถยนต์</h1><br>
 </center>
 <div class="col-md-6">
-  <form action="/action_page.php">
-    <label for="fname">ยี่ห้อ</label>
-    <input type="text" id="fname" name="firstname" placeholder="ยี่ห้อ" class="form-control">
+  <form action="" method="POST">
 
-    <label for="lname">รุ่น</label>
-    <input type="text" id="lname" name="lastname" placeholder="รุ่น" class="form-control">
+    <label for="carid">รหัสรถยนต์</label>
+    <input type="text" id="carid" name="carid" placeholder="รหัสรถ" class="form-control">
 
-    <label for="country">ขนาด</label>
-    <select id="country" name="country" class="form-control">
-      <option value="australia">เล็ก</option>
-      <option value="canada">กลาง</option>
-      <option value="usa">ใหญ่</option>
+    <label for="brand">รุ่น</label>
+    <input type="text" id="brand" name="brand" placeholder="brand" class="form-control">
+
+    <label for="size">ขนาด</label>
+    <select id="size" name="size" class="form-control">
+      <option>S</option>
+      <option>M</option>
+      <option>L</option>
     </select>
   
-    <input type="submit" value="ตกลง">
-  </form>
-</div>
+    <input type="submit" value="ตกลง" name="submit_updatecar">
+<?php
+session_start();
+$Car_ID = "";
+$Car_Model = "";
+$Car_Size = "";
 
+$db = mysqli_connect('localhost', 'root', '', 'id3534259_test');
+
+if (isset($_POST['submit_updatecar'])) {
+	$Car_ID = mysqli_real_escape_string($db, $_POST['carid']);
+    $Car_Model = mysqli_real_escape_string($db, $_POST['brand']);
+    $Car_Size = mysqli_real_escape_string($db, $_POST['size']);
+    
+	$query = "INSERT INTO car (Car_id, Car_Model, Car_Size) 
+				VALUES('$Car_ID', '$Car_Model', '$Car_Size')";
+	mysqli_query($db, $query);
+
+	echo "<script>window.location.href = 'menuAD.php';</script>";
+	}
+?>
+</form>
+</div>
 </body>
 </html>
