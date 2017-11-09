@@ -1,81 +1,79 @@
-<html> 
-<?php include "head.php";
-include "connectdb.php"
+<!DOCTYPE html>
+<html lang="en">
+<?php include "connectdb.php";
+include "head.php";
 ?>
-<title>Custom Menu</title>
-<body> 
+  <head>
 
-<style>
-input[type=text] {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 240px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    float: center;
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="facivon.ico">
+    <link href="style.css" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="script.js"></script>
+    <title>BonFitness</title>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="css/freelancer.min.css" rel="stylesheet">
 
-}
 
-select {
-    width: 50%;
-    padding: 12px 20px;
-    margin: 8px 257px;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    float: center;
-
-}
-div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-}
+  </head>
+<style type="text/css">
+ a,span {
+    font-family: BoonJot, Helvetica, sans-serif;
+  }
+  a:hover {
+      text-decoration: none;
+  }
+  div{
+    left:400px;
+  }
+  table{
+    margin-top:50px;
+    background-color:#FFFFFF;
+  }
+  #zxc{
+    background-color:#DCDCDC;
+  }
 </style>
-
- <div>
-
-
-
-
- <label for="Menu">เมนู</label>
-<select  id='Menu' name='Menu'>
-<option value="0">เลือกเมนู</option>
-<?php
-$fc = mysqli_query($conn,"select * from menu");
-while($row = mysqli_fetch_array($fc)){
-    echo "<option value=".$row['Menu_id'].">".$row['Menu_name']."</option>";
-}
+<div class="col-md-6 text-align=center">
+<table class="table table-striped" id="myTable">
+    <thead>
+      <tr>
+      <th colspan="4" id="zxc"><center><h4>แก้ไขรายการ</h4></center></th>
+      </tr>
+      <tr>
+        <th><center>ลำดับ</center></th>
+        <th><center>รายการ</center></th>
+        <th><center>ราคา</center></th>
+        <th><center>แก้ไข</center></th>
+      </tr>
+    </thead>
+    <tbody>  
+    <?php   
+    $query = mysqli_query($conn,"select * from orderlist");
  ?>
-</select> 
+<?php
+$i = 0;
+       while($objResult = mysqli_fetch_array($query)){
+        $i= $i+1;
+        echo "<tr>"; 
+        echo "<td><center>".$i."</center></td>";
+        echo "<td><center>".$objResult['Order_Name']."</center></td>";
+        echo "<td><center>".$objResult['Order_Price']."</center></td>";
+       echo "<td><center> <a href='editnews.php?id=".$objResult['ID_Order']."'> <input type='button' class='btn btn-info' value='แก้ไข'></a>
+       <a href='deletenews.php?id=".$objResult['ID_Order']."'> <input type='button' class='btn btn-danger' value='ลบ'></a></td>";
+        echo "</tr>";      
+      }
+      echo "</table>";
+?>
 
-  <form action="/action_page.php">
-    <label for="fname">First</label>
-    <input type="text" id="fname" name="firstname" placeholder="Your name..">
-<br>
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-<br>
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-<br>
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-<br>
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lastname" placeholder="Your last name..">
-<br>
-
- </div>
-
-
-
-</table> 
-</div> 
-</div> 
-</div> 
-</body>
 </html>
