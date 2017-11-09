@@ -23,7 +23,7 @@ include "header.php";
     <tbody>
       <tr>
         <th scope="row">09:00</th>
-        <td>ว่าง</td>
+        <td id="10900">ว่าง</td>
         <td>ว่าง</td>
         <td>ว่าง</td>
       </tr>
@@ -112,6 +112,7 @@ include "header.php";
         <td>ว่าง</td>
       </tr>
     </tbody>
+    <td class="off">
   </table>
   </div>
 </body>
@@ -120,19 +121,34 @@ include "header.php";
 <script>
             
             var table = document.getElementById("schedule"),rIndex,cIndex;
-            
+
+          
             // table rows
             for(var i = 1; i < table.rows.length; i++)
             {
                 // row cells
                 for(var j = 0; j < table.rows[i].cells.length; j++)
                 {
+                 
                     table.rows[i].cells[j].onclick = function()
                     {
                         rIndex = this.parentElement.rowIndex;
                         cIndex = this.cellIndex+1;
                         console.log("Row : "+rIndex+" , Cell : "+cIndex);
-                    };
+                        if($(this).text()=='ไม่ว่าง'){
+                          this.innerHTML="ว่าง";
+                          this.style.background="000000" 
+                        }
+                        else{
+                          this.innerHTML="ไม่ว่าง"
+                          this.style.background="red"   
+                        }
+                        
+                        
+                 };
+
+                    
+                   
                 }
             }
             
