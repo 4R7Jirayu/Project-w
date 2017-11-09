@@ -22,12 +22,13 @@
 <h1>REGISTER</h1><br>
 <h4>PERSONAL DATA</h4><br>
 
-<form >
-
+<form method="POST" action="">
 <div >
-<input type="text" class="form-control" placeholder="Name" name="name" required />
+<input type="text" class="form-control" placeholder="Username" name="username" required />
 <br>
-<input type="text" id="i" class="form-control" 	placeholder="SSN" name="ssn" required />
+<input type="text" class="form-control" placeholder="First Name" name="fname" required />
+<br>
+<input type="text" id="i" class="form-control" 	placeholder="Last name" name="lname" required />
 <br>
 
 <input type="text" id="i" class="form-control" placeholder="Address" name="address" required />
@@ -39,15 +40,51 @@
 <input type="text" id="i" class="form-control" placeholder="E-mail" name="email" required />
 <br>
 
-<input type="text" id="i" class="form-control" placeholder="Password" name="pass" required />
-<br>
-<input type="text" id="i" class="form-control" placeholder="Confirm Password" name="conpass" required />
+<input type="text" id="i" class="form-control" placeholder="Password" name="password" required />
 <br><br>
-<a class="btn btn-warning" id="button" href="menu.php" role="button">Register</a>
+<input type="submit" value="Register"  name="reg_user" class="register"/>
 </div>
 </div>
 </div>
 
+<?php
+session_start();
+
+$username = "";
+$email    = "";
+$fname = "";
+$lname = "";
+$tel = "";
+$address = "";
+$password = "";
+$errors = array(); 
+$_SESSION['success'] = "";
+
+// connect to database
+$db = mysqli_connect('localhost', 'root', '', 'id3534259_test');
+
+// REGISTER USER
+if (isset($_POST['reg_user'])) {
+	// receive all input values from the form
+	$username = mysqli_real_escape_string($db, $_POST['username']);
+	$email = mysqli_real_escape_string($db, $_POST['email']);
+	$password = mysqli_real_escape_string($db, $_POST['password']);
+	$fname = mysqli_real_escape_string($db, $_POST['fname']);
+	$lname = mysqli_real_escape_string($db, $_POST['lname']);
+	$tel = mysqli_real_escape_string($db, $_POST['tel']);
+	$address = mysqli_real_escape_string($db, $_POST['address']);
+
+	$password = md5($password);//encrypt the password before saving in the database
+	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address) 
+				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address')";
+	mysqli_query($db, $query);
+
+	$_SESSION['Cus_User'] = $username;
+	$_SESSION['success'] = "You are now logged in";
+	header('location: menu.php');
+	}
+
+?>
 </form>
 </div>
 </body>
