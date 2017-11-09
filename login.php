@@ -32,7 +32,7 @@ label{color:white;}
 include "head.php";
 ?>
 
-<body background="images/bg.jpg">
+<body>
 <div class="main">
 <form action="" method="POST">
   <h3 id="h">Welcome to NP CARCARE</h3><br><br>

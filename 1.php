@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<?php include "connectdb.php";  ?>
+<?php include "connectdb.php";
+include "head.php";
+?>
   <head>
 
     <meta charset="utf-8">
@@ -31,12 +33,23 @@
   a:hover {
       text-decoration: none;
   }
-
-
+  div{
+    left:400px;
+  }
+  table{
+    margin-top:50px;
+    background-color:#FFFFFF;
+  }
+  #zxc{
+    background-color:#DCDCDC;
+  }
 </style>
-
+<div class="col-md-6 text-align=center">
 <table class="table table-striped" id="myTable">
     <thead>
+      <tr>
+      <th colspan="4" id="zxc"><center><h4>แก้ไขรายการ</h4></center></th>
+      </tr>
       <tr>
         <th><center>ลำดับ</center></th>
         <th><center>รายการ</center></th>
@@ -46,7 +59,7 @@
     </thead>
     <tbody>  
     <?php   
-    $query = mysqli_query($conn,"select * from menu");
+    $query = mysqli_query($conn,"select * from orderlist");
  ?>
 <?php
 $i = 0;
@@ -54,10 +67,10 @@ $i = 0;
         $i= $i+1;
         echo "<tr>"; 
         echo "<td><center>".$i."</center></td>";
-        echo "<td><center>".$objResult['Menu_name']."</center></td>";
-        echo "<td><center>".$objResult['Menu_price']."</center></td>";
-       echo "<td><center> <a href='editnews.php?id=".$objResult['Menu_id']."'> <input type='button' class='btn btn-info' value='แก้ไข'></a>
-       <a href='deletenews.php?id=".$objResult['Menu_id']."'> <input type='button' class='btn btn-danger' value='ลบ'></a></td>";
+        echo "<td><center>".$objResult['Order_Name']."</center></td>";
+        echo "<td><center>".$objResult['Order_Price']."</center></td>";
+       echo "<td><center> <a href='editnews.php?id=".$objResult['ID_Order']."'> <input type='button' class='btn btn-info' value='แก้ไข'></a>
+       <a href='deletenews.php?id=".$objResult['ID_Order']."'> <input type='button' class='btn btn-danger' value='ลบ'></a></td>";
         echo "</tr>";      
       }
       echo "</table>";
