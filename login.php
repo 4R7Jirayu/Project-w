@@ -16,11 +16,8 @@ include "connectdb.php";
 	margin: 4px 2px;
 	width:250px;
 }
-body{background-size: 1536px 900px;background-repeat: no-repeat;}
-.main {
-    width: 27%;
-    padding: 15px;
-    left:50%;
+div{
+    margin-top:30px;
 }
 </style>
 <html>
@@ -30,14 +27,14 @@ include "head.php";
 ?>
 
 <body>
-<div class="main"><center>
+<div class="container text-center col-lg-4 col-lg-offset-4">
 <form action="" method="POST">
   <h3 id="h">Welcome to NP CARCARE</h3><br><br>
   <label for="fname">Username:</label>
-  <input type="text" class="form-control" id="user" name="username" placeholder="Username">
+  <input type="text" class="form-control input-lg" id="user" name="username" placeholder="Username">
   <br><br>
   <label for="lname">Password</label>
-  <input type="password" class="form-control" id="pass" name="password" placeholder="Password">
+  <input type="password" class="form-control input-lg" id="pass" name="password" placeholder="Password">
   <br><br>
   <input type="submit" value="Log In"  name="loginbutton" class="login" id="button"/>
   <br><br>
@@ -59,15 +56,9 @@ $query = mysqli_query($conn,"select * from customer where Cus_User = '$lg_userna
 $objResult = mysqli_fetch_array($query);
 if($objResult)
 {
- 
-  
   echo "<script>window.location.href = 'menu.php?id=".$objResult['Cus_User']."&status=".$objResult['Cus_Status']."';</script>";
-} 
-else 
-{
+}else{
    ?> 
-
-
           <div class="row">
   <div class="col-sm-4"></div>
   <div class="col-sm-4"><center><div class="alert alert-danger">   
@@ -75,11 +66,7 @@ else
   </center></div>
   <div class="col-sm-4"></div>
 </div>
-
-
-
    <?php  
-
 }
 }
 ?>
