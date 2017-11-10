@@ -166,9 +166,24 @@ left:0;
     </div>
 </div>
 
-<?php 
-include "menu_table.php";
+<div class="container">
+	<div class="row">
+	 <div class="col-md-12 ">
+	 <div class="table-responsive">
+	  <h3 class="text-muted">รายการทั้งหมด</h3>
+	 </div>
+	 <table id="mytable" class="table table-boarded table-striped">
+	  <tr class="text-center">
+	  <td>No.</td>
+	  <td>Order Name</td>
+	  <td>Order Price</td>
+	  <td>Action</td>
+	  </tr>
+	</table>
+	</div>
+	</div>
+	</div><br>
+	<center><input type="submit" value="Submit"></center>
 
-?>
 
 </html>
