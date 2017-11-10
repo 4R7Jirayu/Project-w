@@ -1,5 +1,5 @@
 <?php 
-include "header.php";
+include "header1.php";
 include "connectdb.php"; 
 ?>
 <style>
@@ -17,23 +17,20 @@ include "connectdb.php";
 	width:250px;
 }
 body{background-size: 1536px 900px;background-repeat: no-repeat;}
-label{color:white;}
-#h{color:white;}
 .main {
     width: 27%;
-    float: right;
     padding: 15px;
-   
-}
+    left:50%;
 }
 </style>
 <html>
+<meta charset="utf-8">
 <?php
 include "head.php";
 ?>
 
 <body>
-<div class="main">
+<div class="main"><center>
 <form action="" method="POST">
   <h3 id="h">Welcome to NP CARCARE</h3><br><br>
   <label for="fname">Username:</label>
@@ -42,32 +39,51 @@ include "head.php";
   <label for="lname">Password</label>
   <input type="password" class="form-control" id="pass" name="password" placeholder="Password">
   <br><br>
-  <input type="submit" value="Log In"  name="loginbutton" class="login"/>
+  <input type="submit" value="Log In"  name="loginbutton" class="login" id="button"/>
   <br><br>
   <a class="btn btn-warning" id="button" href="register.php" role="button">Register</a>
   </form>
 
-<?php
-  if (isset($_POST["loginbutton"]))
-  {
-	  $query = mysqli_query($conn,"SELECT * FROM customer WHERE Cus_User='".$_POST["username"]."' and Cus_Pass='".$_POST["password"]."'");
-        if($objResult = mysqli_fetch_array($query)){
-          $_SESSION["Cus_User"]=$objResult['Cus_User'];
-          $_SESSION["Cus_Pass"]=$objResult['Cus_Pass'];
-          $_SESSION["Cus_Fname"]=$objResult['Cus_Fname'];
-          $_SESSION["Cus_Lname"]=$objResult['Cus_Lname'];
-          $_SESSION["Cus_Tel"]=$objResult['Cus_Tel'];
-          $_SESSION["Cus_Address"]=$objResult['Cus_Address'];
-          $_SESSION["Cus_Email"]=$objResult['Cus_Email'];
-           echo "<script type='text/javascript'>window.location.href = 'menu.php';</script>";            
-	    }
-	    else
-        {
-            alert("ชื่อผู้ใช้งานหรือรหัสผ่านไม่ถูกต้อง");
-        }
-    }
-    
+<?php 
+if(isset($_POST['loginbutton']))
+{
+$lg_username = $_POST['username'];
+  
+$lg_password = $_POST['password'];
+ 
+  
+}
+if(isset($_POST['username']) && isset($_POST['password']))
+{
+$query = mysqli_query($conn,"select * from customer where Cus_User = '$lg_username'  and Cus_Pass = '$lg_password';");
+$objResult = mysqli_fetch_array($query);
+if($objResult)
+{
+ 
+  
+  echo "<script>window.location.href = 'menu.php?id=".$objResult['Cus_User']."&status=".$objResult['Cus_Status']."';</script>";
+} 
+else 
+{
+   ?> 
+
+
+          <div class="row">
+  <div class="col-sm-4"></div>
+  <div class="col-sm-4"><center><div class="alert alert-danger">   
+    <strong>ผิดพลาด!</strong> ชื่อหรือรหัสผ่านไม่ถูกต้อง
+  </center></div>
+  <div class="col-sm-4"></div>
+</div>
+
+
+
+   <?php  
+
+}
+}
 ?>
+
 </div>
 </body>
 </html>
