@@ -2,17 +2,8 @@
 <?php include "header.php";?>
 <?php include "head.php";
 include "connectdb.php";
-    if (empty($_GET['status']))
-    {
-        $status="99";
-        $check_inout="เข้าสู่ระบบ";
-    }
-    else
-    {
-        $Cus_User=$_GET['id'];
-        $Cus_Status=$_GET['status'];
-        $check_inout="ออกจากระบบ";
-    }    
+$Cus_User=$_GET['id'];
+$Cus_Status=$_GET['status'];
 ?>
 <style>
 .dropdown{
@@ -32,19 +23,29 @@ left:0;
         <h4>
             Services
         </h4>
-	
+        <?php
+        $sql = mysqli_query($conn,"select * from customer where Cus_User='".$Cus_User."'");
+        while($row = mysqli_fetch_array($sql)){
+           $fname = $row['Cus_Fname'];
+           $lname = $row['Cus_Lname'];
+           $tel = $row['Cus_Tel'];
+           $email = $row['Cus_Email'];
+        }
+        if($_GET['id'] != ''){ ?>
 		<span style="display:inline-block" class="dropdown">
-		<input type=text name=foo id=foo />
+		<input type=text name=foo id=foo  value="<?php echo $fname;?>" disabled />
 		</span>
 		<span style="display:inline-block" class="dropdown">
-		<input type=text name=bar id=bar />
+		<input type=text name=bar id=bar  value="<?php echo $lname;?>" disabled />
 		</span><br><br>
 		<span style="display:inline-block" class="dropdown" id="pad">
-		<input type=text name=bar id=bar />
+		<input type=text name=bar id=bar  value="<?php echo $tel;?>" disabled />
 		</span>
 		<span style="display:inline-block" class="dropdown">
-		<input type=text name=bar id=bar />
+		<input type=text name=bar id=bar  value="<?php echo $email;?>" disabled />
 		</span><br><br><br>
+        <?php }else{header('Location: login.php');}?>
+
         <div class="col-md-2">
             <div class="panel panel-danger">
                 <div class="panel-heading">
@@ -82,7 +83,7 @@ left:0;
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
                 </ul>
                 <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-info" href="http://www.jquery2dotnet.com">BUY NOW!</a>
+                <button id="menu2" class="btn btn-primary"> CHOOSE  </button>
                 </div>
             </div>
         </div>
@@ -102,8 +103,7 @@ left:0;
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
                 </ul>
                 <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-success" href="http://www.jquery2dotnet.com">BUY
-                        NOW!</a>
+                <button id="menu3" class="btn btn-primary"> CHOOSE  </button>
                 </div>
             </div>
         </div>
@@ -123,8 +123,7 @@ left:0;
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
                 </ul>
                 <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-primary" href="http://www.jquery2dotnet.com">BUY
-                        NOW!</a>
+                <button id="menu4" class="btn btn-primary"> CHOOSE  </button>
                 </div>
             </div>
         </div>
@@ -144,8 +143,7 @@ left:0;
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
                 </ul>
                 <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-warning" href="http://www.jquery2dotnet.com">BUY
-                        NOW!</a>
+                <button id="menu5" class="btn btn-primary"> CHOOSE  </button>
                 </div>
             </div>
         </div>
@@ -165,8 +163,7 @@ left:0;
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
                 </ul>
                 <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-default" href="http://www.jquery2dotnet.com">BUY
-                        NOW!</a>
+                <button id="menu6" class="btn btn-primary"> CHOOSE  </button>
                 </div>
             </div>
         </div>
@@ -201,11 +198,7 @@ left:0;
     <script>
 
 $("#menu1").on('click' , function() {
-
-
-
 console.log('load data');
-
         $.ajax({                                      
             url: 'api.php',                  //the script to call to get data          
             data: "",                        //you can insert url argumnets here to pass to api.php
@@ -215,17 +208,133 @@ console.log('load data');
             {
                 console.log(data);
 
-                var tb = "";
+                var tb = ""; 
+                    tb += "<tr>";
+                    tb += "<td>" + data[0].id + "</td>";
+                    tb += "<td>" + data[0].name + "</td>";
+                    tb += "<td>" + data[0].price+ "</td>";
+                    tb+= "<td><button id='del' class='btn btn-danger'>DELETE</button> </td> ";
+                    tb += "</tr>";
+                $("#tlist").append(tb);
+            } 
+        });
 
-                
+    });
+
+$("#menu2").on('click' , function() {
+console.log('load data');
+        $.ajax({                                      
+            url: 'api.php',                  //the script to call to get data          
+            data: "",                        //you can insert url argumnets here to pass to api.php
+                                             //for example "id=5&parent=6"
+            dataType: 'json',                //data format      
+            success: function(data)          //on recieve of reply
+            {
+                console.log(data);
+
+                var tb = ""; 
                     tb += "<tr>";
                     tb += "<td>" + data[1].id + "</td>";
                     tb += "<td>" + data[1].name + "</td>";
                     tb += "<td>" + data[1].price+ "</td>";
                     tb+= "<td><button id='del' class='btn btn-danger'>DELETE</button> </td> ";
                     tb += "</tr>";
-                
+                $("#tlist").append(tb);
+            } 
+        });
 
+    });
+
+$("#menu3").on('click' , function() {
+console.log('load data');
+        $.ajax({                                      
+            url: 'api.php',                  //the script to call to get data          
+            data: "",                        //you can insert url argumnets here to pass to api.php
+                                             //for example "id=5&parent=6"
+            dataType: 'json',                //data format      
+            success: function(data)          //on recieve of reply
+            {
+                console.log(data);
+
+                var tb = ""; 
+                    tb += "<tr>";
+                    tb += "<td>" + data[2].id + "</td>";
+                    tb += "<td>" + data[2].name + "</td>";
+                    tb += "<td>" + data[2].price+ "</td>";
+                    tb+= "<td><button id='del' class='btn btn-danger'>DELETE</button> </td> ";
+                    tb += "</tr>";
+                $("#tlist").append(tb);
+            } 
+        });
+
+    });
+
+$("#menu4").on('click' , function() {
+console.log('load data');
+        $.ajax({                                      
+            url: 'api.php',                  //the script to call to get data          
+            data: "",                        //you can insert url argumnets here to pass to api.php
+                                             //for example "id=5&parent=6"
+            dataType: 'json',                //data format      
+            success: function(data)          //on recieve of reply
+            {
+                console.log(data);
+
+                var tb = ""; 
+                    tb += "<tr>";
+                    tb += "<td>" + data[3].id + "</td>";
+                    tb += "<td>" + data[3].name + "</td>";
+                    tb += "<td>" + data[3].price+ "</td>";
+                    tb+= "<td><button id='del' class='btn btn-danger'>DELETE</button> </td> ";
+                    tb += "</tr>";
+                $("#tlist").append(tb);
+            } 
+        });
+
+    });
+
+$("#menu5").on('click' , function() {
+console.log('load data');
+        $.ajax({                                      
+            url: 'api.php',                  //the script to call to get data          
+            data: "",                        //you can insert url argumnets here to pass to api.php
+                                             //for example "id=5&parent=6"
+            dataType: 'json',                //data format      
+            success: function(data)          //on recieve of reply
+            {
+                console.log(data);
+
+                var tb = ""; 
+                    tb += "<tr>";
+                    tb += "<td>" + data[4].id + "</td>";
+                    tb += "<td>" + data[4].name + "</td>";
+                    tb += "<td>" + data[4].price+ "</td>";
+                    tb+= "<td><button id='del' class='btn btn-danger'>DELETE</button> </td> ";
+                    tb += "</tr>";
+                $("#tlist").append(tb);
+            } 
+        });
+
+    });
+
+$("#menu6").on('click' , function() {
+console.log('load data');
+        $.ajax({                                      
+            url: 'api.php',                  //the script to call to get data          
+            data: "",                        //you can insert url argumnets here to pass to api.php
+                                             //for example "id=5&parent=6"
+            dataType: 'json',                //data format      
+            success: function(data)          //on recieve of reply
+            {
+                console.log(data);
+
+                var tb = ""; 
+                    tb += "<tr>";
+                    tb += "<td>" + data[5].id + "</td>";
+                    tb += "<td>" + data[5].name + "</td>";
+                    tb += "<td>" + data[5].price+ "</td>";
+                    tb+= "<td><button id='del' class='btn btn-danger'>DELETE</button> </td> ";
+                    tb += "</tr>";
                 $("#tlist").append(tb);
             } 
         });
