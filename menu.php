@@ -32,13 +32,7 @@ left:0;
         <h4>
             Services
         </h4>
-		<select class="dropdown">
-		<option value="volvo">Volvo</option>
-		<option value="saab">Saab</option>
-		<option value="opel">Opel</option>
-		<option value="audi">Audi</option>
-		</select>
-		
+	
 		<span style="display:inline-block" class="dropdown">
 		<input type=text name=foo id=foo />
 		</span>
@@ -67,7 +61,8 @@ left:0;
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
                 </ul>
                 <div class="panel-footer">
-                    <a class="btn btn-lg btn-block btn-danger" href="http://www.jquery2dotnet.com">BUY NOW!</a>
+                    <button id="menu1" class="btn btn-primary"> CHOOSE  </button>
+                
                 </div>
             </div>
         </div>
@@ -184,18 +179,69 @@ left:0;
 	 <div class="table-responsive">
 	  <h3 class="text-muted">รายการทั้งหมด</h3>
 	 </div>
-	 <table id="mytable" class="table table-boarded table-striped">
-	  <tr class="text-center">
-	  <td>No.</td>
-	  <td>Order Name</td>
-	  <td>Order Price</td>
-	  <td>Action</td>
-	  </tr>
-	</table>
+	 <table  class="table table-striped">
+     <thead>
+         <tr>
+             <td>Id</td>
+             <td>List</td>
+             <td>Price</td>
+             <td>EDIT</td>
+
+         </tr>
+     </thead>
+     <tbody id="tlist">
+     </tbody>
+ </table>
 	</div>
 	</div>
 	</div><br>
 	<center><input type="submit" value="Submit"></center>
+
+
+    <script>
+
+$("#menu1").on('click' , function() {
+
+
+
+console.log('load data');
+
+        $.ajax({                                      
+            url: 'api.php',                  //the script to call to get data          
+            data: "",                        //you can insert url argumnets here to pass to api.php
+                                             //for example "id=5&parent=6"
+            dataType: 'json',                //data format      
+            success: function(data)          //on recieve of reply
+            {
+                console.log(data);
+
+                var tb = "";
+
+                
+                    tb += "<tr>";
+                    tb += "<td>" + data[1].id + "</td>";
+                    tb += "<td>" + data[1].name + "</td>";
+                    tb += "<td>" + data[1].price+ "</td>";
+                    tb+= "<td><button id='del' class='btn btn-danger'>DELETE</button> </td> ";
+                    tb += "</tr>";
+                
+
+                $("#tlist").append(tb);
+            } 
+        });
+
+    });
+
+    // ลบแถว
+
+    $(document).on('click','#del', function() {
+       
+      $(this).closest('tr').remove();
+      return false;
+    });
+    </script>
+
+
 
 
 </html>
