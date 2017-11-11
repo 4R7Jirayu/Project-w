@@ -1,7 +1,7 @@
 <html>
-<?php include "head.php";?>
+<?php include "../head.php";?>
 <?php 
-include "header.php";
+include "../header.php";
 ?>
 
       <style>
@@ -47,9 +47,9 @@ $(document).ready(function(){
                     tb += "</tr>";
                     
                 }
-                alert(tb);
-                //$("#schedule").append(tb);
-                $("#schedule").innerText  (tb);
+                
+                $("#schedule").append(tb);
+              //  $("#schedule").innerText  (tb);
                // document.write(tb);
             } 
         });       
