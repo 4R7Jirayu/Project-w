@@ -56,7 +56,11 @@ $query = mysqli_query($conn,"select * from customer where Cus_User = '$lg_userna
 $objResult = mysqli_fetch_array($query);
 if($objResult)
 {
+  if($objResult[Cus_Status] == "user"){
   echo "<script>window.location.href = 'menu.php?id=".$objResult['Cus_User']."&status=".$objResult['Cus_Status']."';</script>";
+  }elseif($objResult[Cus_Status] == "admin"){
+  echo "<script>window.location.href = 'menuAd.php?id=".$objResult['Cus_User']."&status=".$objResult['Cus_Status']."';</script>";
+  }
 }else{
    ?> 
           <div class="row">

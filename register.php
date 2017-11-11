@@ -74,8 +74,8 @@ if (isset($_POST['reg_user'])) {
 	$tel = mysqli_real_escape_string($db, $_POST['tel']);
 	$address = mysqli_real_escape_string($db, $_POST['address']);
 
-	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address) 
-				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address')";
+	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address, Cus_Status) 
+				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address', 'user')";
 	mysqli_query($db, $query);
 
 	$_SESSION['Cus_User'] = $username;
