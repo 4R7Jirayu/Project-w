@@ -1,5 +1,5 @@
 <html>
-<?php include "header.php";?>
+<?php include "header1.php";?>
 <style>
 #button{
 	background-color: #FF6600;
@@ -74,14 +74,12 @@ if (isset($_POST['reg_user'])) {
 	$tel = mysqli_real_escape_string($db, $_POST['tel']);
 	$address = mysqli_real_escape_string($db, $_POST['address']);
 
-	$password = md5($password);//encrypt the password before saving in the database
-	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address) 
-				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address')";
+	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address, Cus_Status) 
+				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address', 'user')";
 	mysqli_query($db, $query);
 
 	$_SESSION['Cus_User'] = $username;
-	$_SESSION['success'] = "You are now logged in";
-	header('location: menu.php');
+	header('location: login.php');
 	}
 
 ?>

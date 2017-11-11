@@ -1,6 +1,18 @@
 <html>
 <?php include "header.php";?>
 <?php include "head.php";
+include "connectdb.php";
+    if (empty($_GET['status']))
+    {
+        $status="99";
+        $check_inout="เข้าสู่ระบบ";
+    }
+    else
+    {
+        $Cus_User=$_GET['id'];
+        $Cus_Status=$_GET['status'];
+        $check_inout="ออกจากระบบ";
+    }    
 ?>
 <style>
 .dropdown{
