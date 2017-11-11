@@ -2,6 +2,9 @@
 <?php include "head.php";?>
 <?php 
 include "header.php";
+include "connectdb.php";
+session_start();
+
 ?>
 
       <style>

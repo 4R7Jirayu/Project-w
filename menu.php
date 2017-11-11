@@ -2,8 +2,8 @@
 <?php include "header.php";?>
 <?php include "head.php";
 include "connectdb.php";
-$Cus_User=$_GET['id'];
-$Cus_Status=$_GET['status'];
+session_start();
+
 ?>
 <style>
 .dropdown{
@@ -17,7 +17,11 @@ left:0;
 #pad{
 	margin-left:73px;
 }
+button{
+    margin-left:25px;
+}
 </style>
+
 <div class="container">
     <div class="row">
         <h4>
@@ -192,7 +196,9 @@ left:0;
 	</div>
 	</div>
 	</div><br>
-	<center><input type="submit" value="Submit"></center>
+	<center><input type="button" name="Button" value="Submit" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>';">
+    </center>
+
 
 
     <script>
@@ -349,7 +355,6 @@ console.log('load data');
       return false;
     });
     </script>
-
 
 
 
