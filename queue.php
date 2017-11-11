@@ -5,9 +5,8 @@ include "header.php";
 ?>
 
       <style>
-            td:hover{background-color:#ddd;;cursor: pointer}
-            .selected{background-color: red;color: #fff;font-weight: bold}
-        </style>
+            td:hover{background-color:#ddfddd;;cursor: pointer}           
+      </style>
 
 <body >
 <div  class="container">
@@ -19,108 +18,45 @@ include "header.php";
         <th scope="col">Block 2</th>
         <th scope="col">Block 3</th>
       </tr>
-    </thead>
+    </thead>      
     <tbody>
-      <tr>
-        <th scope="row">09:00</th>
-        <td id="10900">ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">09:30</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">10:00</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">10:30</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">11:00</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">11:30</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">12:00</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">12:30</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">13:00</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">13:30</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">14:00</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">14:30</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">15:00</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">15:30</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
-      <tr>
-        <th scope="row">16:00</th>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-        <td>ว่าง</td>
-      </tr>
     </tbody>
-    <td class="off">
-  </table>
-  </div>
+    </table>
+</div>
+
 </body>
 
 
 <script>
-            
-            var table = document.getElementById("schedule"),rIndex,cIndex;
+
+$(document).ready(function(){
+        $.ajax({                                      
+            url: 'apiQ.php',                  //the script to call to get data          
+            data: "",                        //you can insert url argumnets here to pass to api.php
+                                             //for example "id=5&parent=6"
+            dataType: 'json',                //data format      
+            success: function(data)          //on recieve of reply
+            {   var tb = "";
+
+                for(var i = 0; i < data.length; i++) {
+                    tb += "<tr>";
+                    tb += "<td>" + data[i].time + "</td>";
+                    tb += "<td>" + data[i].bock1 + "</td>";
+                    tb += "<td>" + data[i].bock2+ "</td>";
+                    tb += "<td>" + data[i].bock3+ "</td>";
+                    tb += "</tr>";
+                    
+                }
+                alert(tb);
+                //$("#schedule").append(tb);
+                $("#schedule").innerText  (tb);
+               // document.write(tb);
+            } 
+        });       
+    });  
+
+
+    var table = document.getElementById("schedule"),rIndex,cIndex;
 
           
             // table rows
@@ -131,13 +67,14 @@ include "header.php";
                 {
                  
                     table.rows[i].cells[j].onclick = function()
-                    {
+                    { 
                         rIndex = this.parentElement.rowIndex;
                         cIndex = this.cellIndex+1;
                         console.log("Row : "+rIndex+" , Cell : "+cIndex);
+                       
                         if($(this).text()=='ไม่ว่าง'){
                           this.innerHTML="ว่าง";
-                          this.style.background="000000" 
+                          this.style.background="000000"  
                         }
                         else{
                           this.innerHTML="ไม่ว่าง"
@@ -151,9 +88,7 @@ include "header.php";
                    
                 }
             }
-            
+
+
         </script>
-
-
-
 </html>
