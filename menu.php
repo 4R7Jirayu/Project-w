@@ -192,8 +192,7 @@ left:0;
 	</div>
 	</div>
 	</div><br>
-	<center><input type="submit" value="Submit"></center>
-
+	<center><input type="submit" value=SUBMIT method="post" id="click" onclick='t'></center>
 
     <script>
 
