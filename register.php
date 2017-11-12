@@ -42,7 +42,7 @@
 
 <input type="text" id="i" class="form-control" placeholder="Password" name="password" required />
 <br><br>
-<input type="submit" value="Register"  name="reg_user" class="register"/>
+<input type="submit" value="Register" class="btn btn-success" name="reg_user" class="register"/>
 </div>
 </div>
 </div>
