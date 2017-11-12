@@ -41,17 +41,14 @@ include "head.php";
   <a class="btn btn-warning" id="button" href="register.php" role="button">Register</a>
   </form>
 
-<?php
-session_start();
-
-
+<?php 
 if(isset($_POST['loginbutton']))
 {
 $lg_username = $_POST['username'];
   
 $lg_password = $_POST['password'];
-
-$_SESSION['Cus_User1'] = $_POST['username'];
+ 
+  
 }
 if(isset($_POST['username']) && isset($_POST['password']))
 {
@@ -60,8 +57,7 @@ $objResult = mysqli_fetch_array($query);
 if($objResult)
 {
   if($objResult[Cus_Status] == "user"){
-  echo "<script>window.location.href = 'menu.php?id=".$_SESSION['Cus_User1']."&status=".$objResult['Cus_Status']."';</script>";
-  $_SESSION['Cus_Status1'] = $objResult['Cus_Status'];
+  echo "<script>window.location.href = 'menu.php?id=".$objResult['Cus_User']."&status=".$objResult['Cus_Status']."';</script>";
   }elseif($objResult[Cus_Status] == "admin"){
   echo "<script>window.location.href = 'menuAd.php?id=".$objResult['Cus_User']."&status=".$objResult['Cus_Status']."';</script>";
   }

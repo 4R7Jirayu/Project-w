@@ -2,9 +2,12 @@
 <?php include "head.php";?>
 <?php 
 include "header.php";
+<<<<<<< HEAD
 include "connectdb.php";
 session_start();
 $_SESSION['ID_Order'] = $_GET['idorder'];
+=======
+>>>>>>> 369faf69378967c9b8349a138c0c900237df8dea
 ?>
 
       <style>
@@ -69,7 +72,10 @@ $_SESSION['ID_Order'] = $_GET['idorder'];
                 }
                 
                $("#bck").append(tb);
-               
+                //$("#bck").append(tb);
+               // alert(tb);
+              //  $("#schedule").innerText  (tb);
+               // document.write(tb);
             } 
         });       
     });  
@@ -81,4 +87,39 @@ $_SESSION['ID_Order'] = $_GET['idorder'];
 
 </body>
 
+
+<script>
+    var table = document.getElementById("schedule"),rIndex,cIndex;
+    
+   
+            // table rows
+            for(var i = 1; i < table.rows.length; i++)
+            {
+                // row cells
+                for(var j = 0; j < table.rows[i].cells.length; j++)
+                {
+                    
+                    table.rows[i].cells[j].onclick = function()
+                    { 
+                        rIndex = this.parentElement.rowIndex;
+                        cIndex = this.cellIndex+1;
+                        console.log("Row : "+rIndex+" , Cell : "+cIndex);
+                       
+                        if($(this).text()=='ไม่ว่าง'){
+                          this.innerHTML="ว่าง";
+                          this.style.background="000000"  
+                        }
+                        else{
+                          this.innerHTML="ไม่ว่าง"
+                          this.style.background="red"   
+                        }
+                 };
+                }
+            }
+                    
+                    
+   
+
+
+        </script>
 </html>

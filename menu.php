@@ -2,8 +2,8 @@
 <?php include "header.php";?>
 <?php include "head.php";
 include "connectdb.php";
-session_start();
-
+$Cus_User=$_GET['id'];
+$Cus_Status=$_GET['status'];
 ?>
 <style>
 .dropdown{
@@ -14,11 +14,15 @@ margin-left:5px;
 .col-md-2{
 left:0;
 }
+<<<<<<< HEAD
 button{
     margin-left:25px;
+=======
+#pad{
+	margin-left:73px;
+>>>>>>> 369faf69378967c9b8349a138c0c900237df8dea
 }
 </style>
-
 <div class="container">
     <div class="row">
         <h4>
@@ -166,12 +170,40 @@ button{
 </div>
 <br>
 
+<<<<<<< HEAD
 
 
 
 
 
 <script>
+=======
+<div class="container">
+	<div class="row">
+	 <div class="col-md-12 ">
+	 <div class="table-responsive">
+	  <h3 class="text-muted">รายการทั้งหมด</h3>
+	 </div>
+	 <table  class="table table-striped">
+     <thead>
+         <tr>
+             <td>Id</td>
+             <td>List</td>
+             <td>Price</td>
+             <td>EDIT</td>
+
+         </tr>
+     </thead>
+     <tbody id="tlist">
+     </tbody>
+ </table>
+	</div>
+	</div>
+	</div><br>
+	<center><input type="submit" value=SUBMIT method="post" id="click" onclick='t'></center>
+
+    <script>
+>>>>>>> 369faf69378967c9b8349a138c0c900237df8dea
 
 $("#menu1").on('click' , function() {
 console.log('load data');
@@ -325,6 +357,7 @@ console.log('load data');
       return false;
     });
     </script>
+
 
 
 

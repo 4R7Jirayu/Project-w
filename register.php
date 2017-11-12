@@ -44,9 +44,14 @@
 <br>
 
 <input type="text" id="i" class="form-control" placeholder="Password" name="password" required />
+<<<<<<< HEAD
 <br>
 <br>
 <input type="submit" value="Register"  name="reg_user" class="register" id="button"/>
+=======
+<br><br>
+<input type="submit" value="Register" class="btn btn-success" name="reg_user" class="register"/>
+>>>>>>> 369faf69378967c9b8349a138c0c900237df8dea
 </div>
 </div>
 </div>
