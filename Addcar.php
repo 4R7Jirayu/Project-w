@@ -3,6 +3,7 @@ include "header1.php";
 ?>
 <?php
 include "head.php";
+include "connectdb.php";
 ?>
 <html>
 <meta charset="UTF-8">
@@ -58,7 +59,6 @@ div {
       <option>M</option>
       <option>L</option>
     </select>
-  
     <input type="submit" value="ตกลง" name="submit_updatecar">
 <?php
 session_start();
