@@ -16,8 +16,7 @@ td{
 <html> 
 <?php include "head.php"; ?>
 <?php 
-include "header1.php";
-include "connectdb.php";
+include "header.php";
 ?>
 <title>Print Bill</title>
 <center>
@@ -26,6 +25,15 @@ include "connectdb.php";
 </div>
 <div>
 <h3 style="text-decoration: underline">Receipt</h3><br>
+<span style="display:inline-block">
+<input type=text name=foo id=foo placeholder=ID>
+</span><br>
+<span style="display:inline-block">
+<input type=text name=bar id=bar placeholder=DATE>
+</span><br>
+<span style="display:inline-block">
+<input type=text name=bar id=bar placeholder=TIME>
+</span><br>
 
 <div class="container">
 	<div class="row">
@@ -35,26 +43,48 @@ include "connectdb.php";
 	  <tr>
 	  <th style="text-align:center">No.</th>
 	  <th style="text-align:center">Customer</th>
-      <th style="text-align:center">Order Name</th>
-	  <th style="text-align:center">Order Price</th>
-      <th style="text-align:center">Time</th>
-	  <th style="text-align:center">Action</th>
+	  <th style="text-align:center">CUST_ID</th>
+	  <th style="text-align:center">Price</th>
 	  </tr>
-<?php
-	  $sql = mysqli_query($conn,"select * from bill");
-	 $n=1;
-		while($row = mysqli_fetch_array($sql)){
-			echo "<tr class='text-center'>";
-			echo "<td>".$n."</td>";
-            echo "<td>".$row['Cus_User']."</td>";
-            echo "<td>".$row['Order_Name']."</td>";
-            echo "<td>".$row['Total_Price']."</td>";
-            echo "<td>".$row['Order_Time']."</td>";
-			echo "<td><input type='button' class='btn btn-danger' value='PRINT'></td>";
-			echo "</tr>";
-			$n++;
-		}
-?>
+	  <td>asdasd</td>
+	  <td>zxc</td>
+	  <td>asdl</td>
+	  <td>qwe</td>
+	  <tr>
+	<td colspan="3"><b>Total Price</b></td>
+    <td>---</td>
+  		</tr>
+
+
+<?php $sql = mysqli_query($conn,"Select * from student inner join major on student.major_id=major.major_id inner join faculty on faCulty.faculty_id=major.faculty_id ORDER BY std_id ASC"); 
+    $n=1; 
+    while($row = mysqli_fetch_array($sql))
+    { 
+        echo "<tr class='text-center'>";
+        echo "<td>".$n."</td>"; 
+        echo "<td>".$row['std_fname']."</td>"; 
+        echo "<td>".$row['std_lname']."</td>"; 
+        echo "<td>".$row['std_id']."</td>"; 
+        echo "<td>".$row['faculty_name']."</td>"; 
+        echo "<td>".$row['std_nick']."</td>"; 
+        echo "<td>".$row['std_tel']."</td>"; 
+        echo "<td>".$row['std_birthday']."</td>"; 
+        echo "<td>".$row['std_age']."</td>"; 
+        echo "<td>".$row['std_address']."</td>"; 
+      
+       echo "<td>
+       <a href='edit_student.php?std_id=".$row['std_id']."'>
+       <span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
+       </a>
+       <a href='del_student.php?std_id=".$row['std_id']."' onclick='return confirm(\"คุณต้องการลบข้อมูลนี้ ?\");'>
+       <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
+       </a>
+       </td>";
+   echo "</tr>";
+    
+       $n++; 
+    } 
+    ?>
 </table> 
 </div>
 </div>

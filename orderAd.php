@@ -7,73 +7,92 @@
     }
 </style>
 <html>
-<?php include "head.php"; 
-include "header1.php";
-include "connectdb.php";
-?>
+<?php include "head.php"; ?>
 <title>Order Admin</title>
 <body>
 <h1 style="text-align:center">Order Customer</h1>
 <h3 style="margin-left:20">Customer</h3>
 <div class="container">
 <div class="row col-md-12 custyle">
-<table class="table custab" id="tbja">
+<table class="table custab">
 <thead>
     <tr>
-        <th class="text-center">No</th>
-        <th class="text-center">Customer</th>
-        <th class="text-center">Name</th>
-        <th class="text-center">Price</th>
-        <th class="text-center">Time</th>
-        <th class="text-center">Status</th>
+        <th>No</th>
+        <th>Customer</th>
+        <th>Cust ID</th>
+        <th>Status</th>
+        <th>Time</th>
+        <th>Amount</th>
+        <th class="text-center">Edit</th>
     </tr>
-
-    <?php
-	  $sql = mysqli_query($conn,"select * from bill");
-	 $n=1;
-		while($row = mysqli_fetch_array($sql)){
-			echo "<tr class='text-center'>";
-			echo "<td>".$n."</td>";
-            echo "<td>".$row['Cus_User']."</td>";
-            echo "<td>".$row['Order_Name']."</td>";
-            echo "<td>".$row['Total_Price']."</td>";
-            echo "<td>".$row['Order_Time']."</td>";
-            echo "<td>ยังบ่ได้จ่าย</td>";
-			echo "</tr>";
-			$n++;
-		}
-?>
+</thead>
+        <tr>
+            <td>1</td>
+            <td>News</td>
+            <td>News Cate</td>
+            <td>News Cate</td>
+            <td>News Cate</td>
+            <td>News Cate</td>
+            <td class="text-center"><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Products</td>
+            <td>Main Products</td>
+            <td>Main Products</td>
+            <td>Main Products</td>
+            <td>Main Products</td>
+            <td class="text-center"><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Blogs</td>
+            <td>Parent Blogs</td>
+            <td>Parent Blogs</td>
+            <td>Parent Blogs</td>
+            <td>Parent Blogs</td>
+            <td class="text-center"><a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+        </tr>
 </table>
+<a href="#" class="btn btn-primary btn-lg pull-right"><b>+</b>Confirm</a>
 </div>
 </div>
-<script>
-    var table = document.getElementById("tbja"),rIndex,cIndex;
+
+
+<?php $sql = mysqli_query($conn,"Select * from student inner join major on student.major_id=major.major_id inner join faculty on faCulty.faculty_id=major.faculty_id ORDER BY std_id ASC"); 
+    $n=1; 
+    while($row = mysqli_fetch_array($sql))
+    { 
+        echo "<tr class='text-center'>";
+        echo "<td>".$n."</td>"; 
+        echo "<td>".$row['std_fname']."</td>"; 
+        echo "<td>".$row['std_lname']."</td>"; 
+        echo "<td>".$row['std_id']."</td>"; 
+        echo "<td>".$row['faculty_name']."</td>"; 
+        echo "<td>".$row['std_nick']."</td>"; 
+        echo "<td>".$row['std_tel']."</td>"; 
+        echo "<td>".$row['std_birthday']."</td>"; 
+        echo "<td>".$row['std_age']."</td>"; 
+        echo "<td>".$row['std_address']."</td>"; 
+       // echo "<td> <a href='edit_student.php?std_id=".$row['std_id']."'> <span class='glyphicon glyphicon—pencil' aria—hidden='true'></span> แก้ไข</a> ";
+        //echo "<a href='del_student.php?std_id=".$row['std_id']." onclick='return confirm(\"ลบข้อมูลนี้ ?\");'> <span class='glyphicon glyphicon-trash' aria-hidden='true'>ลบ</span> </a> </td>";              
+       // echo "</tr>"; 
+       echo "<td>
+       <a href='edit_student.php?std_id=".$row['std_id']."'>
+       <span class='glyphicon glyphicon-pencil' aria-hidden='true'></span>
+       </a>
+       <a href='del_student.php?std_id=".$row['std_id']."' onclick='return confirm(\"คุณต้องการลบข้อมูลนี้ ?\");'>
+       <span class='glyphicon glyphicon-trash' aria-hidden='true'></span>
+       </a>
+       </td>";
+   echo "</tr>";
     
-   
-            // table rows
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                // row cells
-                for(var j = 0; j < table.rows[i].cells.length; j++)
-                {
-                    
-                    table.rows[i].cells[j].onclick = function()
-                    { 
-                        rIndex = this.parentElement.rowIndex;
-                        cIndex = this.cellIndex+1;
-                        console.log("Row : "+rIndex+" , Cell : "+cIndex);
-                       
-                        if($(this).text()=='จ่ายแล้ว'){
-                          this.innerHTML="ยังบ่ได้จ่าย";
-                          this.style.background="000000"  
-                        }
-                        else{
-                          this.innerHTML="จ่ายแล้ว"
-                          this.style.background="red"   
-                        }
-                 };
-                }
-            }
-        </script>
+       $n++; 
+    } 
+    ?>
+</table> 
+</div> 
+</div> 
+</div> 
 </body>
 </html>

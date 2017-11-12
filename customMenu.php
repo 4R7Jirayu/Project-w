@@ -2,7 +2,6 @@
 <html lang="en">
 <?php include "connectdb.php";
 include "head.php";
-include "header1.php";
 ?>
   <head>
 
@@ -76,4 +75,5 @@ $i = 0;
       }
       echo "</table>";
 ?>
+
 </html>

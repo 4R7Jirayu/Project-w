@@ -1,5 +1,5 @@
 <?php 
-include "header1.php";
+include "header.php";
 ?>
 <?php
 include "head.php";
