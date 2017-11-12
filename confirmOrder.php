@@ -1,5 +1,9 @@
 <?php 
 include "header.php";
+$bock=$_GET['bock'];
+$time=$_GET['time'];
+echo $bock;
+echo $time;
 ?>
 <?php
 include "head.php";
@@ -32,22 +36,22 @@ td{
 <div>
 <h3 style="text-decoration: underline">Personal Data</h3><br>
 <span style="display:inline-block">
-<input type=text name=foo id=foo placeholder=Name>
+<input type=text class=form-control name=foo id=foo placeholder=Name>
 </span><br>
 <span style="display:inline-block">
-<input type=text name=bar id=bar placeholder=SSN>
+<input type=text class=form-control name=bar id=bar placeholder=SSN>
 </span><br>
 <span style="display:inline-block">
-<input type=text name=bar id=bar placeholder=CustomerID>
+<input type=text class=form-control name=bar id=bar placeholder=CustomerID>
 </span><br>
 <span style="display:inline-block">
-<input type=text name=bar id=bar placeholder=Address>
+<input type=text class=form-control name=bar id=bar placeholder=Address>
 </span><br>
 <span style="display:inline-block">
-<input type=text name=bar id=bar placeholder=Email>
+<input type=text class=form-control name=bar id=bar placeholder=Email>
 </span><br>
 <span style="display:inline-block">
-<input type=text name=bar id=bar placeholder=Tel>
+<input type="tel" class=form-control name=bar id=bar placeholder=Tel>
 </span>
 </div>
 

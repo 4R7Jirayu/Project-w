@@ -1,7 +1,4 @@
 <html>
-<?php
-$Cus_User=$_GET['id'];
-?>
 <head>
 <style>
 #ull{
@@ -29,7 +26,6 @@ $Cus_User=$_GET['id'];
 
 <ul id="ull">
   <li id="lii"><a href="menu.php" id="ja">NP CARCARE</a></li>
-  <li id="lii"><?php echo ($Cus_User) ?></li>
 </ul>
 
 </body>
