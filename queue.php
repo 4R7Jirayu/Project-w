@@ -4,7 +4,7 @@
 include "header.php";
 include "connectdb.php";
 session_start();
-
+$_SESSION['ID_Order'] = $_GET['idorder'];
 ?>
 
       <style>
@@ -44,21 +44,21 @@ session_start();
                     tb += "<tr>";
                     tb += "<td width='40'>" + data[i].time + "</td>";
                     if(data[i].bock1 == "ว่าง"){
-                        tb += "<td><a class='btn btn-md btn-block btn-success' href='confirmOrder.php?bock=bock1&time="+data[i].time+"'>" + data[i].bock1 + "</a></td>";
+                        tb += "<td><a class='btn btn-md btn-block btn-success' href='confirmOrder.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo $_SESSION['ID_Order'];?>&bock=Bck1&time="+data[i].time+"'>" + data[i].bock1 + "</a></td>";
                     }
                     else{
                         tb += "<td><a class='btn btn-md btn-block btn-danger disabled not-active' href='confirmOrder.php?bock=bock1&time="+data[i].time+"'>" + data[i].bock1 + "</a></td>";
                    
                     }
                     if(data[i].bock2 == "ว่าง"){
-                        tb += "<td><a class='btn btn-md btn-block btn-success' href='confirmOrder.php?bock=bock2&time="+data[i].time+"'>" + data[i].bock2 + "</a></td>";
+                        tb += "<td><a class='btn btn-md btn-block btn-success' href='confirmOrder.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo $_SESSION['ID_Order'];?>&bock=Bck2&time="+data[i].time+"'>" + data[i].bock2 + "</a></td>";
                     }
                     else{
                         tb += "<td><a class='btn btn-md btn-block btn-danger disabled not-active' href='confirmOrder.php?bock=bock2&time="+data[i].time+"'>" + data[i].bock2 + "</a></td>";
                    
                     }
                     if(data[i].bock3 == "ว่าง"){
-                        tb += "<td><a class='btn btn-md btn-block btn-success' href='confirmOrder.php?bock=bock3&time="+data[i].time+"'>" + data[i].bock3 + "</a></td>";
+                        tb += "<td><a class='btn btn-md btn-block btn-success' href='confirmOrder.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo $_SESSION['ID_Order'];?>&bock=Bck3&time="+data[i].time+"'>" + data[i].bock3 + "</a></td>";
                     }
                     else{
                         tb += "<td><a class='btn btn-md btn-block btn-danger disabled not-active' href='confirmOrder.php?bock=bock3&time="+data[i].time+"'>" + data[i].bock3 + "</a></td>";

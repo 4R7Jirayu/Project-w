@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php include "connectdb.php";
-include "header.php";
 include "head.php";
   $Menu_id=$_GET['id']; ?>
 <style>
@@ -40,9 +39,9 @@ div{
 <?php 
 if(isset($_POST['submit_editnews']))
 {
-    $Menu_Price  = $_POST['Menu_price'];
-    $sql_update = "UPDATE menu SET Menu_price='".$Menu_Price."' WHERE Menu_id='".$Menu_id."'";
+    $Menu_Price  = $_POST['Order_Price'];
+    $sql_update = "UPDATE orderlist SET Order_Price='".$Menu_Price."' WHERE ID_Order='".$Menu_id."'";
     $query_sql = mysqli_query($conn,$sql_update);
- echo "<script>window.location.href = '1.php';</script>";
+ echo "<script>window.location.href = 'customMenu.php';</script>";
 } 
 ?>

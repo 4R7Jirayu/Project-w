@@ -12,6 +12,7 @@
 	    <a href="customMenu.php" class="btn btn-warning " role="button" aria-pressed="true">Custom Menu</a>
         <a href="orderAd.php" class="btn btn-warning " role="button" aria-pressed="true">Status</a>
 		<a href="Addcar.php" class="btn btn-warning " role="button" aria-pressed="true">Add Car</a>
+    <a href="clear.php" class="btn btn-warning " role="button" aria-pressed="true">Clear</a>
     </div>
     </div>
   </div>       

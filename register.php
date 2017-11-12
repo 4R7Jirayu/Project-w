@@ -40,9 +40,13 @@
 <input type="text" id="i" class="form-control" placeholder="E-mail" name="email" required />
 <br>
 
+<input type="text" id="i" class="form-control" placeholder="Car Model" name="model" required />
+<br>
+
 <input type="text" id="i" class="form-control" placeholder="Password" name="password" required />
-<br><br>
-<input type="submit" value="Register"  name="reg_user" class="register"/>
+<br>
+<br>
+<input type="submit" value="Register"  name="reg_user" class="register" id="button"/>
 </div>
 </div>
 </div>
@@ -57,6 +61,7 @@ $lname = "";
 $tel = "";
 $address = "";
 $password = "";
+$model = "";
 $errors = array(); 
 $_SESSION['success'] = "";
 
@@ -73,9 +78,10 @@ if (isset($_POST['reg_user'])) {
 	$lname = mysqli_real_escape_string($db, $_POST['lname']);
 	$tel = mysqli_real_escape_string($db, $_POST['tel']);
 	$address = mysqli_real_escape_string($db, $_POST['address']);
+	$model = mysqli_real_escape_string($db, $_POST['model']);
 
-	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address, Cus_Status) 
-				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address', 'user')";
+	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address, Cus_Status, Cus_Model) 
+				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address', 'user','$model')";
 	mysqli_query($db, $query);
 
 	$_SESSION['Cus_User'] = $username;

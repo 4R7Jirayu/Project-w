@@ -14,9 +14,6 @@ margin-left:5px;
 .col-md-2{
 left:0;
 }
-#pad{
-	margin-left:73px;
-}
 button{
     margin-left:25px;
 }
@@ -34,39 +31,43 @@ button{
            $lname = $row['Cus_Lname'];
            $tel = $row['Cus_Tel'];
            $email = $row['Cus_Email'];
+           $model = $row['Cus_Model'];
         }
         if($_GET['id'] != ''){ ?>
 		<span style="display:inline-block" class="dropdown">
 		<input type=text name=foo id=foo  value="<?php echo $fname;?>" disabled />
 		</span>
-		<span style="display:inline-block" class="dropdown">
+        <span style="display:inline-block" class="dropdown">
 		<input type=text name=bar id=bar  value="<?php echo $lname;?>" disabled />
+		</span>
+		<span style="display:inline-block" class="dropdown">
+		<input type=text name=bar id=bar  value="<?php echo $model;?>" disabled />
 		</span><br><br>
-		<span style="display:inline-block" class="dropdown" id="pad">
+		<span style="display:inline-block" class="dropdown" >
 		<input type=text name=bar id=bar  value="<?php echo $tel;?>" disabled />
 		</span>
 		<span style="display:inline-block" class="dropdown">
 		<input type=text name=bar id=bar  value="<?php echo $email;?>" disabled />
-		</span><br><br><br>
+		</span>
+        
+        <br><br><br>
         <?php }else{header('Location: login.php');}?>
 
         <div class="col-md-2">
             <div class="panel panel-danger">
                 <div class="panel-heading">
                     <h4 class="text-center">
-                        DEV PLAN</h4>
+                        ล้างรถ</h4>
                 </div>
                 <div class="panel-body text-center">
                     <p class="lead">
-                        <strong>$10 / month</strong></p>
+                        <strong>200 บาท</strong></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>1 ชั่วโมง</li>
                 </ul>
                 <div class="panel-footer">
-                    <button id="menu1" class="btn btn-primary"> CHOOSE  </button>
+<input id="menu1" class="btn btn-primary" style="font-size: 8px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_01";?>';">
                 
                 </div>
             </div>
@@ -75,19 +76,17 @@ button{
             <div class="panel panel-info">
                 <div class="panel-heading">
                     <h4 class="text-center">
-                        PRO PLAN</h4>
+                        ดูดฝุ่น</h4>
                 </div>
                 <div class="panel-body text-center">
                     <p class="lead">
-                        <strong>$10 / month</strong></p>
+                        <strong>120 บาท</strong></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>1 ชั่วโมง</li>
                 </ul>
                 <div class="panel-footer">
-                <button id="menu2" class="btn btn-primary"> CHOOSE  </button>
+<input id="menu2" class="btn btn-primary" style="font-size: 8px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_02";?>';">
                 </div>
             </div>
         </div>
@@ -95,39 +94,35 @@ button{
             <div class="panel panel-success">
                 <div class="panel-heading">
                     <h4 class="text-center">
-                        FREE PLAN</h4>
+                        เปลี่ยนแบตเตอรี่</h4>
                 </div>
                 <div class="panel-body text-center">
                     <p class="lead">
-                        <strong>$10 / month</strong></p>
+                        <strong>1000 บาท</strong></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>1 ชั่วโมง</li>
                 </ul>
                 <div class="panel-footer">
-                <button id="menu3" class="btn btn-primary"> CHOOSE  </button>
+<input id="menu3" class="btn btn-primary" style="font-size: 8px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_03";?>';">
                 </div>
             </div>
         </div>
         <div class="col-md-2">
             <div class="panel panel-primary">
                 <div class="panel-heading">
-                    <h4 class="text-center">
-                        SILVER PLAN</h4>
+                    <h5 class="text-center">
+                        เปลี่ยนน้ำมันเครื่อง</h5>
                 </div>
                 <div class="panel-body text-center">
                     <p class="lead">
-                        <strong>$10 / month</strong></p>
+                        <strong>300 บาท</strong></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>1 ชั่วโมง</li>
                 </ul>
                 <div class="panel-footer">
-                <button id="menu4" class="btn btn-primary"> CHOOSE  </button>
+<input id="menu4" class="btn btn-primary" style="font-size: 8px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_04";?>';">
                 </div>
             </div>
         </div>
@@ -135,19 +130,17 @@ button{
             <div class="panel panel-warning">
                 <div class="panel-heading">
                     <h4 class="text-center">
-                        GOLD PLAN</h4>
+                        ปะยาง</h4>
                 </div>
                 <div class="panel-body text-center">
                     <p class="lead">
-                        <strong>$10 / month</strong></p>
+                        <strong>100 บาท</strong></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>1 ชั่วโมง</li>
                 </ul>
                 <div class="panel-footer">
-                <button id="menu5" class="btn btn-primary"> CHOOSE  </button>
+<input id="menu5" class="btn btn-primary" style="font-size: 8px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_05";?>';">
                 </div>
             </div>
         </div>
@@ -155,53 +148,30 @@ button{
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <h4 class="text-center">
-                        PLAT PLAN</h4>
+                        เคลือบสี</h4>
                 </div>
                 <div class="panel-body text-center">
                     <p class="lead">
-                        <strong>$10 / month</strong></p>
+                        <strong>2000 บาท</strong></p>
                 </div>
                 <ul class="list-group list-group-flush text-center">
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Personal use</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>Unlimited projects</li>
-                    <li class="list-group-item"><i class="icon-ok text-danger"></i>27/7 support</li>
+                    <li class="list-group-item"><i class="icon-ok text-danger"></i>1 ชั่วโมง</li>
                 </ul>
                 <div class="panel-footer">
-                <button id="menu6" class="btn btn-primary"> CHOOSE  </button>
+<input id="menu6" class="btn btn-primary" style="font-size: 8px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_06";?>';">
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-<div class="container">
-	<div class="row">
-	 <div class="col-md-12 ">
-	 <div class="table-responsive">
-	  <h3 class="text-muted">รายการทั้งหมด</h3>
-	 </div>
-	 <table  class="table table-striped">
-     <thead>
-         <tr>
-             <td>Id</td>
-             <td>List</td>
-             <td>Price</td>
-             <td>EDIT</td>
-
-         </tr>
-     </thead>
-     <tbody id="tlist">
-     </tbody>
- </table>
-	</div>
-	</div>
-	</div><br>
-	<center><input type="button" name="Button" value="Submit" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>';">
-    </center>
+<br>
 
 
 
-    <script>
+
+
+
+<script>
 
 $("#menu1").on('click' , function() {
 console.log('load data');

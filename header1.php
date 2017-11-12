@@ -25,7 +25,7 @@
 <body>
 
 <ul id="ull">
-  <li id="lii"><a href="menu.php" id="ja">NP CARCARE</a></li>
+  <li id="lii">NP CARCARE</a></li>
 </ul>
 
 </body>
