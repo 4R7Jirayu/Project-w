@@ -50,7 +50,7 @@ include "connectdb.php";
             echo "<td>".$row['Order_Name']."</td>";
             echo "<td>".$row['Total_Price']."</td>";
             echo "<td>".$row['Order_Time']."</td>";
-			echo "<td><input type='button' class='btn btn-danger' value='PRINT'></td>";
+			echo "<td><a type='button' class='btn btn-danger' href='changPayStatus.php?status=จ่ายแล้ว'>PRINT</a></td>";
 			echo "</tr>";
 			$n++;
 		}
