@@ -84,7 +84,7 @@ if($_GET['id'] != ''){ ?>
 <input type=text class=form-control name="add" id=bar value=<?php echo $model ?> disabled>
 </span><br>
 </div>
-<?php }else{header('Location: login.php');}?>
+<?php }else{header('Location: index.php');}?>
 
 <?php
         $sql = mysqli_query($conn,"select * from orderlist where ID_Order='".$ID_Order."'");

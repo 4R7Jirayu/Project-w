@@ -1,5 +1,7 @@
 <html>
-<?php include "header1.php";?>
+<?php include "header1.php";
+include "connectdb.php";
+?>
 <style>
 #button{
 	background-color: #FF6600;
@@ -15,6 +17,7 @@
 	width:250px;
 }
 </style>
+
 <?php include "head.php";?>
 <body>
 <div class="col-md-6 col-md-offset-3" >
@@ -40,7 +43,7 @@
 <input type="text" id="i" class="form-control" placeholder="E-mail" name="email" required />
 <br>
 
-<input type="text" id="i" class="form-control" placeholder="Car Model" name="model" required />
+<input type="text" id="i" class="form-control" placeholder="License plate" name="model" required />
 <br>
 
 <input type="text" id="i" class="form-control" placeholder="Password" name="password" required />
@@ -82,10 +85,10 @@ if (isset($_POST['reg_user'])) {
 
 	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address, Cus_Status, Cus_Model) 
 				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address', 'user','$model')";
-	mysqli_query($db, $query);
+	mysqli_query($conn, $query);
 
 	$_SESSION['Cus_User'] = $username;
-	header('location: login.php');
+	header('location: index.php');
 	}
 
 ?>
