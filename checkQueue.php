@@ -1,7 +1,7 @@
 <html>
 <?php include "head.php";?>
 <?php 
-include "header.php";
+include "header1.php";
 include "connectdb.php";
 session_start();
 ?>

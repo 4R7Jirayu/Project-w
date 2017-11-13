@@ -25,8 +25,8 @@
 <body>
 
 <ul id="ull">
-  <li id="lii">NP CARCARE</a></li>
+<li id="lii"><a href="menuAd.php?id='admin'&status='admin'">NP CARCARE</a></li>
+<li id="lii" style="margin-left:78%"><?php echo "admin"; ?><a href="logout.php" style="margin-left:60px">Logout</a></li>
 </ul>
-
 </body>
 </html>

@@ -14,7 +14,8 @@ $_SESSION['AD_Status'] = $_GET['status'];
 	    <a href="customMenu.php" class="btn btn-warning " role="button" aria-pressed="true">Custom Menu</a>
         <a href="orderAd.php" class="btn btn-warning " role="button" aria-pressed="true">Status</a>
 		<a href="Addcar.php" class="btn btn-warning " role="button" aria-pressed="true">Add Car</a>
-    <a href="clear.php" class="btn btn-warning " role="button" aria-pressed="true">Clear</a>
+    <a href="clear.php" class="btn btn-warning " role="button" aria-pressed="true">Clear All</a>
+    <a href="checkQueue.php" class="btn btn-warning " role="button" aria-pressed="true">Clear Bock</a>
     <?php }else{header('Location: index.php');} ?>
     </div>
     </div>

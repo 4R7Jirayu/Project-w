@@ -26,54 +26,28 @@ include "connectdb.php";
         <th class="text-center">Price</th>
         <th class="text-center">Time</th>
         <th class="text-center">Status</th>
+        <th class="text-center">Action</th>
     </tr>
 
     <?php
-	  $sql = mysqli_query($conn,"select * from bill");
-	 $n=1;
+      $sql = mysqli_query($conn,"select * from bill");
+      
+        $n=1;
 		while($row = mysqli_fetch_array($sql)){
 			echo "<tr class='text-center'>";
-			echo "<td>".$n."</td>";
+			echo "<td>".$row['ID_Bill']."</td>";
             echo "<td>".$row['Cus_User']."</td>";
             echo "<td>".$row['Order_Name']."</td>";
             echo "<td>".$row['Total_Price']."</td>";
             echo "<td>".$row['Order_Time']."</td>";
-            echo "<td>ยังบ่ได้จ่าย</td>";
-			echo "</tr>";
-			$n++;
+            echo "<td>".$row['Order_Status']."</td>";
+            echo "<td><center> <a href='check.php?id=".$row['ID_Bill']."'><input type='button' class='btn btn-info' value='check'></a></td>";
+            echo "</tr>";
+        $n++;
 		}
 ?>
 </table>
 </div>
 </div>
-<script>
-    var table = document.getElementById("tbja"),rIndex,cIndex;
-    
-   
-            // table rows
-            for(var i = 1; i < table.rows.length; i++)
-            {
-                // row cells
-                for(var j = 0; j < table.rows[i].cells.length; j++)
-                {
-                    
-                    table.rows[i].cells[j].onclick = function()
-                    { 
-                        rIndex = this.parentElement.rowIndex;
-                        cIndex = this.cellIndex+1;
-                        console.log("Row : "+rIndex+" , Cell : "+cIndex);
-                       
-                        if($(this).text()=='จ่ายแล้ว'){
-                          this.innerHTML="ยังบ่ได้จ่าย";
-                          this.style.background="000000"  
-                        }
-                        else{
-                          this.innerHTML="จ่ายแล้ว"
-                          this.style.background="red"   
-                        }
-                 };
-                }
-            }
-        </script>
 </body>
 </html>

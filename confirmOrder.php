@@ -121,8 +121,8 @@ if(isset($_POST['checkout'])){
 	$BTime = $_SESSION['Cus_TIME'];
 	$OP = $_SESSION['Cus_Pr'];
 	
-	$sql = "INSERT INTO bill(Cus_User,Order_Name,Total_Price,Order_Time)
-	VALUES ('".$Cus_User."','".$name."','".$OP."','".$BTime."')";
+	$sql = "INSERT INTO bill(Cus_User,Order_Name,Total_Price,Order_Time,Order_Status)
+	VALUES ('".$Cus_User."','".$name."','".$OP."','".$BTime."','ยังไม่จ่าย')";
 	
 	$sql1 = "UPDATE bockschedule SET $bock = 'ไม่ว่าง' WHERE TimeS='".$time."' ";
 	$sql_query = mysqli_query($conn,$sql);
