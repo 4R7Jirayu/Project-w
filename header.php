@@ -18,7 +18,7 @@ $Cus_Status=$_GET['status'];
 	display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px;
     text-decoration: none;
 }
 #ja{

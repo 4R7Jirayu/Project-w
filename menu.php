@@ -5,6 +5,7 @@ include "connectdb.php";
 session_start();
 
 ?>
+
 <style>
 .dropdown{
 float:left;
@@ -51,7 +52,7 @@ button{
 		</span>
         
         <br><br><br>
-        <?php }else{header('Location: login.php');}?>
+        <?php }else{header('Location: index.php');}?>
 
         <div class="col-md-2">
             <div class="panel panel-danger">
@@ -67,7 +68,7 @@ button{
                     <li class="list-group-item"><i class="icon-ok text-danger"></i>1 ชั่วโมง</li>
                 </ul>
                 <div class="panel-footer">
-<input id="menu1" class="btn btn-primary" style="font-size: 8px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_01";?>';">
+<input id="menu1" class="btn btn-primary" style="font-size: 5px" value="Choose" onClick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo "odr_s_01";?>';">
                 
                 </div>
             </div>
