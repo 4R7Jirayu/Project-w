@@ -5,6 +5,7 @@ include "connectdb.php";
 session_start();
 
 ?>
+
 <style>
 .dropdown{
 float:left;
@@ -51,7 +52,7 @@ button{
 		</span>
         
         <br><br><br>
-        <?php }else{header('Location: login.php');}?>
+        <?php }else{header('Location: index.php');}?>
 
         <div class="col-md-2">
             <div class="panel panel-danger">

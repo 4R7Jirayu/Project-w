@@ -46,6 +46,7 @@ include "header1.php";
   }
 </style>
 <div class="col-md-6 text-align=center">
+
 <table class="table table-striped" id="myTable">
     <thead>
       <tr>
