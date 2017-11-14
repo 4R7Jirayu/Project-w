@@ -1,5 +1,6 @@
 <html> 
 <?php include "head.php";
+include "header1.php";
 session_start();
 $_SESSION['AD_Status'] = $_GET['status'];
 ?>

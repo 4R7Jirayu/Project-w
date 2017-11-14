@@ -35,7 +35,7 @@ include "connectdb.php";
         $n=1;
 		while($row = mysqli_fetch_array($sql)){
 			echo "<tr class='text-center'>";
-			echo "<td>".$row['ID_Bill']."</td>";
+			echo "<td>".$n."</td>";
             echo "<td>".$row['Cus_User']."</td>";
             echo "<td>".$row['Order_Name']."</td>";
             echo "<td>".$row['Total_Price']."</td>";
