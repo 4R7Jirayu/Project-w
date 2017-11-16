@@ -44,6 +44,9 @@ session_start();
 <input type="text" id="tel" class="form-control" placeholder="Tel" name="tel" required />
 <br>
 
+<input type="text" id="ssn" class="form-control" placeholder="SSN" name="ssn" required />
+<br>
+
 <input type="text" id="email" class="form-control" placeholder="E-mail" name="email" required />
 <br>
 
@@ -99,6 +102,7 @@ $('#button').on('click',function(){
 	var fname = $('#fname').val();
 	var lname = $('#lname').val();
 	var tel = $('#tel').val();
+	var ssn = $('#ssn').val();
 	var address = $('#address').val();
 	var model = $('#CarID').val();
 	var plate = $('#plate').val();
@@ -115,6 +119,7 @@ $('#button').on('click',function(){
 				'TxtFname' : fname,
 				'TxtLname' : lname,
 				'TxtTel' : tel,
+				'TxtSSN' : ssn,
 				'TxtAddress' : address,
 				'TxtCarModel' : model,
 				'TxtPlate' : plate

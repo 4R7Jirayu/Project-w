@@ -50,7 +50,7 @@ include "connectdb.php";
             echo "<td>".$row['Order_Name']."</td>";
             echo "<td>".$row['Total_Price']."</td>";
             echo "<td>".$row['Order_Time']."</td>";
-			echo "<td><a type='button' class='btn btn-danger' href='changPayStatus.php?status=จ่ายแล้ว'>PRINT</a></td>";
+			echo "<td><a type='button' class='btn btn-danger' href='printform.php?idb=".$row['ID_Bill']." '>PRINT</a></td>";
 			echo "</tr>";
 			$n++;
 		}
@@ -60,6 +60,4 @@ include "connectdb.php";
 </div>
 </div>       
 </div>
-<a href="#" class="btn btn-primary btn-lg"><b>PRINT</b></a>	
-
 </html>
