@@ -1,5 +1,5 @@
 <?php 
-include "header.php";
+include "header1.php";
 ?>
 <?php
 include "head.php";
@@ -77,7 +77,7 @@ if (isset($_POST['submit_updatecar'])) {
 				VALUES('$Car_ID', '$Car_Model', '$Car_Size')";
 	mysqli_query($db, $query);
 
-	echo "<script>window.location.href = 'menuAD.php';</script>";
+	echo "<script>window.location.href = 'menuAd.php?id=admin&status=admin';</script>";
 	}
 ?>
 </form>

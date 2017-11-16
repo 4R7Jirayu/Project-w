@@ -1,5 +1,7 @@
 <html>
-<?php include "header1.php";?>
+<?php include "header1.php";
+include "connectdb.php";
+?>
 <style>
 #button{
 	background-color: #FF6600;
@@ -15,7 +17,12 @@
 	width:250px;
 }
 </style>
-<?php include "head.php";?>
+
+<?php include "head.php";
+session_start();
+?>
+
+
 <body>
 <div class="col-md-6 col-md-offset-3" >
     <div class="text-center">
@@ -24,66 +31,110 @@
 
 <form method="POST" action="">
 <div >
-<input type="text" class="form-control" placeholder="Username" name="username" required />
+<input type="text" id="username" class="form-control" placeholder="Username" name="username" required />
 <br>
-<input type="text" class="form-control" placeholder="First Name" name="fname" required />
+<input type="text" id="fname" class="form-control" placeholder="First Name" name="fname" required />
 <br>
-<input type="text" id="i" class="form-control" 	placeholder="Last name" name="lname" required />
-<br>
-
-<input type="text" id="i" class="form-control" placeholder="Address" name="address" required />
+<input type="text" id="lname" class="form-control" 	placeholder="Last name" name="lname" required />
 <br>
 
-<input type="text" id="i" class="form-control" placeholder="Tel" name="tel" required />
+<input type="text" id="address" class="form-control" placeholder="Address" name="address" required />
 <br>
 
-<input type="text" id="i" class="form-control" placeholder="E-mail" name="email" required />
+<input type="text" id="tel" class="form-control" placeholder="Tel" name="tel" required />
 <br>
 
-<input type="text" id="i" class="form-control" placeholder="Password" name="password" required />
-<br><br>
-<input type="submit" value="Register"  name="reg_user" class="register"/>
+<input type="text" id="email" class="form-control" placeholder="E-mail" name="email" required />
+<br>
+
+<input type="text" id="plate" class="form-control" placeholder="License Plate" name="plate" required />
+<br>
+
+<input type="password" id="password" class="form-control" placeholder="Password" name="password" required />
+<br>
+<select name="CarModel"class="form-control" id="CarID" required>
+         <option value="0">เลือกรถ</option>
+        <?php
+		 $fc = mysqli_query($conn,"select * from car");
+		 
+         while($row = mysqli_fetch_array($fc)){
+
+			
+			 echo "<option  value=".$row['Car_id'].">".$row['Car_Model']."</option>";
+			
+         }
+         ?>
+</select>
+<br>
+<br>
+<input type="submit" value="Register"  name="reg_user" class="register" id="button"/>
 </div>
 </div>
 </div>
 
 <?php
-session_start();
 
-$username = "";
-$email    = "";
-$fname = "";
-$lname = "";
-$tel = "";
-$address = "";
-$password = "";
-$errors = array(); 
-$_SESSION['success'] = "";
 
 // connect to database
-$db = mysqli_connect('localhost', 'root', '', 'id3534259_test');
+
 
 // REGISTER USER
-if (isset($_POST['reg_user'])) {
-	// receive all input values from the form
-	$username = mysqli_real_escape_string($db, $_POST['username']);
-	$email = mysqli_real_escape_string($db, $_POST['email']);
-	$password = mysqli_real_escape_string($db, $_POST['password']);
-	$fname = mysqli_real_escape_string($db, $_POST['fname']);
-	$lname = mysqli_real_escape_string($db, $_POST['lname']);
-	$tel = mysqli_real_escape_string($db, $_POST['tel']);
-	$address = mysqli_real_escape_string($db, $_POST['address']);
 
-	$query = "INSERT INTO customer (Cus_User, Cus_Email, Cus_Pass, Cus_Fname, Cus_Lname, Cus_Tel, Cus_Address, Cus_Status) 
-				VALUES('$username', '$email', '$password', '$fname', '$lname', '$tel', '$address', 'user')";
-	mysqli_query($db, $query);
 
-	$_SESSION['Cus_User'] = $username;
-	header('location: login.php');
-	}
+	
 
 ?>
 </form>
 </div>
 </body>
+
+
+<script>
+ $(document).ready(function(){
+
+$('#button').on('click',function(){
+	var username = $('#username').val();
+	var email = $('#email').val();
+	var password = $('#password').val();
+	var fname = $('#fname').val();
+	var lname = $('#lname').val();
+	var tel = $('#tel').val();
+	var address = $('#address').val();
+	var model = $('#CarID').val();
+	var plate = $('#plate').val();
+	
+	if(username !=''){
+		
+		$.ajax({
+			type: "POST",
+			url: "updateCar.php",
+			data: {
+				'TxtUsername' : username,
+				'Txtemail' : email,
+				'Txtpassword' : password,
+				'TxtFname' : fname,
+				'TxtLname' : lname,
+				'TxtTel' : tel,
+				'TxtAddress' : address,
+				'TxtCarModel' : model,
+				'TxtPlate' : plate
+			},
+		   success: function(data){
+			   
+			
+			window.location.href="index.php";
+		   }
+		});
+		return false;
+	}else{
+		alert('กรุณากรอกข้อมูล');
+		return false;
+	}
+});
+ });
+
+ 
+</script>
+
+
 </html>

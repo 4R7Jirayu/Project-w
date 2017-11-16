@@ -2,6 +2,7 @@
 <html lang="en">
 <?php include "connectdb.php";
 include "head.php";
+include "header1.php";
 ?>
   <head>
 
@@ -43,10 +44,15 @@ include "head.php";
   #zxc{
     background-color:#DCDCDC;
   }
+  #adn{
+    margin-top:15px;
+  }
 </style>
 <div class="col-md-6 text-align=center">
+
 <table class="table table-striped" id="myTable">
     <thead>
+    <a href="addmenu.php" class="btn btn-primary btn-xs pull-right" id="adn"><b>+</b>Add new menu</a>
       <tr>
       <th colspan="4" id="zxc"><center><h4>แก้ไขรายการ</h4></center></th>
       </tr>
@@ -75,5 +81,4 @@ $i = 0;
       }
       echo "</table>";
 ?>
-
 </html>
