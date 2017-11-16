@@ -31,6 +31,7 @@ $Cus_Status=$_GET['status'];
 <ul id="ull">
 <li id="lii"><a href="menu.php?id=<?php echo $Cus_User; ?>&status=<?php echo $Cus_Status; ?>">NP CARCARE</a></li>
   <li id="lii" style="margin-left:78%"><?php echo ($Cus_User) ?><a href="logout.php" style="margin-left:60px">Logout</a></li>
+  <li id="lii"><a href="AddcarCus.php?id=<?php echo $Cus_User; ?>&status=<?php echo $Cus_Status; ?>">เพิ่มรถยนต์</a></li>
 </ul>
 
 </body>

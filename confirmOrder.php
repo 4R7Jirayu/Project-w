@@ -11,33 +11,35 @@ session_start();
 $ID_Order=$_REQUEST['idorder'];
 $_SESSION['Cus_ID'] = $_GET['idorder'];
 $_SESSION['Cus_TIME'] = $_GET['time'];
-$sizeCar = "s"; // รอรับค่าไซต์รถ
+$sizeCar =  $_SESSION['CarSize'];
 
 ?>
 <?php
-	function calPiceOrder($ID_Order, $sizeCar) {
+$query="SELECT * FROM orderlist WHERE ID_Order='".$ID_Order."'";
+$sql = mysqli_query($conn,$query);
+while($row = mysqli_fetch_array($sql)){
+   $price = $row['Order_Price'];
+}
 
-		$sql = mysqli_query($conn,"select * from orderlist where ID_Order='".$ID_Order."'");
-        while($row = mysqli_fetch_array($sql)){
-           $price = $row['Order_Price'];
-		}
+	function calPriceOrder($ID_Order, $sizeCar, $price) {
 
-		$calPice = 0;
+		$calPrice = 0;
 		switch ($sizeCar) {
-			case "s":
-				$calPice = $price * 0.75;
+			case "S":
+				$calPrice = $price * 0.75;
 				break;
-			case "m":
-				$calPice = $price;
+			case "M":
+				$calPrice = $price;
 				break;
-			case "l":
-				$calPice = $price * 1.25;
+			case "L":
+				$calPrice =  $price * 1.25;
 				break;
 			default:
-				$calPice = 0;
+				$calPrice = 0;
 		}
-		return $calPice;
+		return $calPrice;
 	}
+
 ?>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script>
@@ -132,7 +134,7 @@ if($_GET['id'] != ''){ ?>
 	  <th>Time</th>
 	  </tr>
 	  <td><?php echo $name;?></td>
-	  <td><?php echo calPiceOrder($ID_Order,$sizeCar); ?></td>
+	  <td><?php echo calPriceOrder($ID_Order,$sizeCar, $price); ?></td>
 	  <td><?php echo $time;?></td>
      </table>
     </div>
@@ -142,6 +144,7 @@ if($_GET['id'] != ''){ ?>
 <form method="POST"><input type="submit" value="Checkout"  name="checkout" class="checkout" id="button"></form>
 <?php
 if(isset($_POST['checkout'])){
+
 	
 	$IDO = $_SESSION['Cus_ID'];
 	$BTime = $_SESSION['Cus_TIME'];
@@ -170,4 +173,6 @@ if(isset($_POST['checkout'])){
 		}
 }
 ?>
+
+
 </html>

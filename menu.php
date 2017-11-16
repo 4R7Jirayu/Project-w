@@ -3,7 +3,7 @@
 <?php include "head.php";
 include "connectdb.php";
 session_start();
-
+echo ($_SESSION['CarSize']);
 ?>
 
 <style>
@@ -33,11 +33,24 @@ button{
            $lname = $row['Cus_Lname'];
            $tel = $row['Cus_Tel'];
            $email = $row['Cus_Email'];
-           $model = $row['Cus_Model'];
+           $model = $row['CarCusID'];
         }
         if($_GET['id'] != ''){ ?>
+        <select id="CarID" name="CarID" class="form-control">
+    <option value="0">เลือกรถ</option>
+    <?php
+     $fc = mysqli_query($conn,"select * from car_cus where Cus_User='".$_SESSION['Cus_User1']."'");
+     
+     while($row = mysqli_fetch_array($fc)){
+
+        
+         echo "<option  value=".$row['CarCusID'].">".$row['CarCusID']."</option>";
+        
+     }
+     ?>
+    </select>
 		<span style="display:inline-block" class="dropdown">
-		<input type=text name=foo id=foo  value="<?php echo $fname;?>" disabled />
+		<input  type=text name=foo id=foo  value="<?php echo $fname;?>" disabled />
 		</span>
         <span style="display:inline-block" class="dropdown">
 		<input type=text name=bar id=bar  value="<?php echo $lname;?>" disabled />
@@ -73,7 +86,7 @@ button{
         echo "<td>".$row['Order_Name']."</td>";
         echo "<td>".$row['Order_Price']."</td>";
         ?>
-        <td><input type="button" class="btn btn-danger" value="Choose" onclick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo $ido;?>';"></td>
+        <td><input type="button" class="btn btn-danger" value="Choose" onclick="window.location='queue.php?id=<?php echo $_SESSION['Cus_User1'];?>&status=<?php echo $_SESSION['Cus_Status1'];?>&idorder=<?php echo $ido;?>&size=<?php echo  $_SESSION['CarSize'];?>';"></td>
         
 <?php   echo "</tr>";       
         }
@@ -81,4 +94,38 @@ button{
 </div> 
 </div>
 </div>
+
+<script>
+
+$(document).ready(function(){
+
+$('#CarID').on('change',function(){
+
+
+	var CarCusID = $('#CarID').val();
+	
+
+	if(CarCusID !=''){
+		
+		$.ajax({
+			type: "POST",
+			url: "getSize.php",
+			data: {
+				'TxtCarCusID' : CarCusID
+			},
+		   success: function(data){
+			   
+			alert(data);
+		   }
+		});
+		return false;
+	}else{
+		alert('กรุณากรอกข้อมูล');
+		return false;
+	}
+});
+ });
+
+
+</script>
 </html>

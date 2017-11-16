@@ -2,7 +2,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$db_name = "id3534259_test";
+$db_name = "dbprojectwebsa";
 $conn = new mysqli(
 	$server,
 	$user,
